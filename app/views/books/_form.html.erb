@@ -1,0 +1,12 @@
+<!-- 
+  <p>
+  <input id="" type="text" name="" placeholder="Search by ISBN">
+  <input class="btn btn-primary" type="submit" value="enter">
+  </p>
+ -->
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>

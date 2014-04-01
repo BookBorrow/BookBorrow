@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401201130) do
+ActiveRecord::Schema.define(version: 20140401211843) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20140401201130) do
     t.datetime "updated_at"
     t.boolean  "returned"
     t.string   "borrower_email"
+  end
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_books", force: true do |t|
