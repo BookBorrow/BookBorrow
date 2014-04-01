@@ -12,7 +12,7 @@
 
   <header class="container">
       <nav>
-      <%= link_to "Main", user_path(current_user)%>
+      <%= link_to "Main", user_path(current_user) if user_signed_in?%>
       <%= link_to "Global Library", books_path%>
         <p class="pull-right">
           <% if user_signed_in? %>
