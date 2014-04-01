@@ -17,8 +17,10 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  */
+
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
+
 body {
   padding-top: 70px;
   padding-bottom: 30px;
@@ -34,26 +36,6 @@ body {
   margin: 5px 0;
 }
 
-html {
-  overflow-y: scroll;
-}
-
-body {
-  padding-top: 60px;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
 .center {
   text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
 }
