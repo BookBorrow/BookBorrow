@@ -18,6 +18,8 @@ describe Book do
     end
 
     it "validates numbericality and length >= 9 for isbn" do
+      @book = create(:book, :isbn => "1234")
+      expect(@book).not_to be_valid
     end
   end
 end

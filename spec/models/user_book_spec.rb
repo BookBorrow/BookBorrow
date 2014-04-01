@@ -6,9 +6,13 @@ describe UserBook do
       @book = create(:book)
       @user = create(:user)
       @user2 = create(:user)
-      @user.books << @books
-      @user.user_books.borrows.create(:user => @user2)
-      expect(@user.user_books.borrows.count).to eq(1)
+
+      #create entry in user_books
+      @user.books << @book
+
+      #create borrow on user_book
+      @user.user_books.first.borrows.create(:user_id => @user2.id)
+      expect(@user.user_books.first.borrows.count).to eq(1)
     end
   end
 end

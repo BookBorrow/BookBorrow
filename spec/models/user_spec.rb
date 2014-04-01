@@ -4,6 +4,7 @@ require 'spec_helper'
 
 describe User do
   describe "associations" do
+
     it "should have many books" do
       @user = create(:user)
       @book = create(:book)
@@ -18,6 +19,7 @@ describe User do
     end
 
     it "should have many loans" do
+      
     end
   end
 end
