@@ -5,4 +5,20 @@ class UserBooksController < ApplicationController
     @user_book.destroy
     redirect_to (user_path(@user))
   end
+
+  def create
+    @user = User.find(params[:user_id])
+    user_book = @user.user_books.build(user_book_params)
+    if user_book.save
+      @library = @user.library
+      redirect_to @user
+    else
+      render 'users/show'
+    end
+  end
+
+  private
+  def user_book_params
+    params.require(:user_book).permit(:from_isbn)
+  end
 end
