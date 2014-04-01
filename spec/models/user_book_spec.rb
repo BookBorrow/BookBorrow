@@ -6,7 +6,6 @@ describe UserBook do
       @book = create(:book)
       @user = create(:user)
       @user2 = create(:user)
-
       #create entry in user_books
       @user.books << @book
 

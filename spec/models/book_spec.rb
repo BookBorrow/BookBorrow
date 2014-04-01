@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Book do
   describe "associations" do
-    it "should have many users" do 
+    it "should have many users" do
       @user = create(:user)
       @book = create(:book)
       @book.users << @user
@@ -20,6 +20,7 @@ describe Book do
     it "validates numbericality and length >= 9 for isbn" do
       @book = create(:book, :isbn => "1234")
       expect(@book).not_to be_valid
+
     end
   end
 end
