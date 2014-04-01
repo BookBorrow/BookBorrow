@@ -14,4 +14,12 @@ class UserBook < ActiveRecord::Base
       self.book_id = book.id
     end
   end
+
+  def borrower
+    if (self.borrows.empty?)
+      return nil
+    else
+      User.find(self.borrows.last.user_id).email
+    end
+  end
 end

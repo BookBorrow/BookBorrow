@@ -12,6 +12,7 @@
     <% values.each do |key, value| %>
     <th><%= value %></th>
     <% end %>
+    <th>Loaned To</th>
     <th>Remove Book</th>
   </tr>
   <% @library.each do |user_book|%>
@@ -23,6 +24,7 @@
     <td><%= user_book.book.send(key)%> </td>
     <% end %>
     <% end %>
+    <td><%= user_book.borrower %></td>
     <td><%= link_to 'Destroy', user_book_path(user_book), method: :delete %></td>
   </tr>
   <% end %>
