@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     self.user_books
   end
 
+
   def loans
     self.user_books.borrows
   end
