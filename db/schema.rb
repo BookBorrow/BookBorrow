@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401190713) do
+ActiveRecord::Schema.define(version: 20140401201130) do
 
   create_table "books", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "isbn"
+    t.string   "isbn"
     t.string   "author"
     t.string   "cover_url"
     t.datetime "created_at"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20140401190713) do
 
   create_table "borrows", force: true do |t|
     t.integer  "user_book_id"
-    t.integer  "user_id"
     t.date     "borrow_date"
     t.integer  "duration_in_days"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "returned"
+    t.string   "borrower_email"
   end
 
   create_table "user_books", force: true do |t|
