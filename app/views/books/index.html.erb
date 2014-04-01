@@ -1,40 +1,36 @@
 <h2>Global Library</h2>
 
-<%= render "form" %> 
+<%= render "form" %>
 
-<% values = {
-"title"=>"Title",
-"description"=>"Description",
-"isbn"=>"ISBN Title",
-"author"=>"Author",
-"cover_url"=>"Cover URL",
-"created_at"=>"Added At",
-"updated_at"=>"Last Updated"
-} %>
 <table class = "table table-responsive table-condensed table-striped">
   <tr>
-    <% values.each do |key, value| %>
-    <th><%= value %></th>
-    <% end %>
+    <th>Title</th>
+    <th>Description</th>
+    <th>ISBN</th>
+    <th>Author</th>
+    <th>Cover</th>
+    <th>Added At</th>
+    <th>Last Updated</th>
     <% if user_signed_in? %>
-    <th>Add This Book To Your Library</th>
+    <th>Add to Library</th>
     <% end %>
   </tr>
+
   <% @books.each do |book|%>
-  <tr class="<%= cycle('oddrow', 'evenrow') -%>">
-    <% values.each do |key, value| -%>
-      <% if key == "cover_url" %>
-      <td><%= image_tag(book.send(key), class: "img-rounded") %></td>    
-      <% elsif key == "description" %>
-      <td><%= truncate(book.send(key), length:250, separator: ' ', omission: '... (continued)') %></td>
-      <% else %>
-      <td><%= book.send(key)%> </td>
-      <% end %>
-    <% end %>
+  <tr class="">
+      <td><%= link_to book.title, book %></td>      
+      <td><%= truncate(book.description, length:250, separator: ' ', omission: '...') %></td>          
+      <td><%= book.isbn %></td>          
+      <td><%= link_to book.author %></td>          
+      <td><%= link_to image_tag(book.cover_url, class: "img-rounded"), book %></td>          
+      <td><%= book.created_at.strftime("%a\, %B \'%d") %></td>          
+      <td><%= book.updated_at.strftime("%a\, %B \'%d") %></td>          
+
     <% if user_signed_in? %>
     <td><%= link_to 'Add Book', user_user_books_path(current_user, :user_book =>{:from_isbn=> book.isbn}),method: :create %></td>
     <% end %>
   </tr>
   <% end %>
+
 </table>
 <%= paginate @books %>
