@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   def library
     self.books
   end
-  
+
   def loans
     self.user_books.borrows
   end
