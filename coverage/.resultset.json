@@ -1,13 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/michaelprouty/dev/flatiron/proj/BookBorrow/app/models/user_book.rb": [
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/michaelprouty/dev/flatiron/proj/BookBorrow/app/models/book.rb": [
         1,
         1,
@@ -16,6 +9,6 @@
         null
       ]
     },
-    "timestamp": 1396368129
+    "timestamp": 1396368751
   }
 }
