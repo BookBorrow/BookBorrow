@@ -27,7 +27,11 @@
     <td><%= user_book.book.send(key)%> </td>
     <% end %>
     <% end %>
+    <% if user_book.borrower %>
     <td><%= user_book.borrower %></td>
+    <% else %>
+    <td>Loan Out</td>
+    <% end %>
     <td><%= link_to 'Destroy', user_book_path(user_book), method: :delete %></td>
   </tr>
   <% end %>
