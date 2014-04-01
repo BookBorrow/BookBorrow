@@ -29,7 +29,7 @@
       <% end %>
     <% end %>
     <% if user_signed_in? %>
-    <td>Add Book LINK</td>
+    <td><%= link_to 'Add Book', user_user_books_path(current_user, :user_book =>{:from_isbn=> book.isbn}),method: :create %></td>
     <% end %>
   </tr>
   <% end %>
