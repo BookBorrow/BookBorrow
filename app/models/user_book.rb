@@ -3,6 +3,10 @@ class UserBook < ActiveRecord::Base
   belongs_to :user
   has_many :borrows
 
+  def on_loan?
+  	borrows.last.returned?
+  end
+
   def from_isbn= isbn
     if book = Book.find_by(:isbn => isbn)
       self.book_id = book.id
