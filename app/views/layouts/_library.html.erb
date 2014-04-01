@@ -20,6 +20,8 @@
     <% values.each do |key, value| -%>
     <% if key == "cover_url" %>
     <td><%= image_tag(user_book.book.send(key), class: "img-rounded") %></td>
+    <% elsif key == "description" %>
+    <td><%= truncate(user_book.book.send(key), length:250, separator: ' ', omission: '... (continued)') %></td>
     <% else %>
     <td><%= user_book.book.send(key)%> </td>
     <% end %>
@@ -29,3 +31,4 @@
   </tr>
   <% end %>
 </table>
+<%= paginate @library %>
