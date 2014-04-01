@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   def library
-    joins(:books).merge(Book.joins(:user_book).where("user_id = '#{self.id}'"))
+    self.books
   end
 end
