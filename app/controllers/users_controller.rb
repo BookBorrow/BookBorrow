@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @library = @user.library
+    @user_book = UserBook.new
   end
   
     #For a user, remove the book from their library

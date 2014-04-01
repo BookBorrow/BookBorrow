@@ -4,7 +4,7 @@ class UserBook < ActiveRecord::Base
   has_many :borrows
 
   def from_isbn= isbn
-    if book = Book.find_by_isbn(isbn)
+    if book = Book.find_by(:isbn => isbn)
       self.book_id = book.id
     else
       book = Book.create_from_google(isbn)
