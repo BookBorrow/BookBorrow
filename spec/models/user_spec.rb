@@ -19,7 +19,19 @@ describe User do
     end
 
     it "should have many loans" do
-      
+      @user = create(:user)
+      @book = create(:book)
+      @user.books << @book
+    end
+  end
+
+  describe "loaning" do 
+    it "#loan" do
+      @user.loan(@user2, @book)
+    end
+
+    it "#loans" do
+      @user.loans
     end
   end
 end
