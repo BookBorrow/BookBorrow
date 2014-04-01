@@ -9,5 +9,8 @@ class User < ActiveRecord::Base
 
   def library
     self.books
+
+  def loans
+    self.user_books.borrows
   end
 end
