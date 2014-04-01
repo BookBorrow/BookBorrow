@@ -4,4 +4,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @library = @user.library
   end
+  
+    #For a user, remove the book from their library
+  def remove_book
+    @user = User.find(params[:id])
+  end
 end

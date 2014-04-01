@@ -1,0 +1,29 @@
+<% values = {
+  "title"=>"Title",
+  "description"=>"Description",
+  "isbn"=>"ISBN Title",
+  "author"=>"Author",
+  "cover_url"=>"Cover URL",
+  "created_at"=>"Added At",
+  "updated_at"=>"Last Updated"
+  } %>
+
+<table class = "table">
+  <tr>
+  <% values.each do |key, value| %>
+    <th><%= value %></th>
+  <% end %>
+  </tr>
+
+    <% @library.each do |book|%>
+    <tr class="<%= cycle('oddrow', 'evenrow') -%>">
+      <% values.each do |key, value| -%>
+      <% if key == "cover_url" %>
+      <td><%= image_tag(book.send(key)) %></td>
+      <% else %>
+      <td><%= book.send(key)%> </td>
+      <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
