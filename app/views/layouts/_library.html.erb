@@ -15,6 +15,7 @@
     <th>Loaned To</th>
     <th>Remove Book</th>
   </tr>
+  
   <% @library.each do |user_book|%>
   <tr class="<%= cycle('oddrow', 'evenrow') -%>">
     <% values.each do |key, value| -%>
