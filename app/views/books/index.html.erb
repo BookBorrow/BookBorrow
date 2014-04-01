@@ -20,13 +20,13 @@
   <% @books.each do |book|%>
   <tr class="<%= cycle('oddrow', 'evenrow') -%>">
     <% values.each do |key, value| -%>
-    <% if key == "cover_url" %>
-    <td><%= image_tag(book.send(key), class: "img-rounded") %></td>    
-    <% elsif key == "description" %>
-    <td><%= truncate(book.send(key), length: 17, separator: ' ') %></td>
-    <% else %>
-    <td><%= book.send(key)%> </td>
-    <% end %>
+      <% if key == "cover_url" %>
+      <td><%= image_tag(book.send(key), class: "img-rounded") %></td>    
+      <% elsif key == "description" %>
+      <td><%= truncate(book.send(key), length:250, separator: ' ', omission: '... (continued)') %></td>
+      <% else %>
+      <td><%= book.send(key)%> </td>
+      <% end %>
     <% end %>
     <% if user_signed_in? %>
     <td>Add Book LINK</td>
