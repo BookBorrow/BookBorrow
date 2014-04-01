@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :book do
-    title "MyString"
-    description "MyText"
-    isbn 1
-    author ""
-    cover_url "MyString"
+    title "Cather in the Rye"
+    description "Horrible"
+    sequence(:isbn, 100000000) { |n| n }
+    author "J.D. Salinger"
+    cover_url "http://readbitchesread.files.wordpress.com/2013/07/catcher-in-the-rye.jpg"
   end
 end
