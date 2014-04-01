@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   resources :books
 
+  root 'books#index'
   devise_for :users 
   devise_scope :user do
-    root to: "devise/sessions#new"
+    # root to: "devise/sessions#new"
   end
+
+  get 'users/:id' => 'user#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
