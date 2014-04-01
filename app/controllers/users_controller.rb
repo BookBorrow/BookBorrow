@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, :only => [:show]
+  #before_action :require_login, :only => "show"
+  #before_action :authorize_user, :only => "show"
   
   def index
     @users = User.all
@@ -19,9 +20,9 @@ class UsersController < ApplicationController
   end
 
   private 
-  def authenticate_user
-    unless params[:id].to_i == current_user.id
-      redirect_to root_path, :notice => "You must be logged in to view this page."
+  def authorize_user
+    unless user_signed_in? && params[:id].to_i == current_user.id
+      redirect_to root_path, :alert => "Improper access rights."
     end
   end
 end
