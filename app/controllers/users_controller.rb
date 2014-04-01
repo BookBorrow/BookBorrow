@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @library = @user.library.page(params[:page]).per(10)
     @user_book = UserBook.new
+    @borrow = Borrow.new
   end
   
     #For a user, remove the book from their library
