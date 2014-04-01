@@ -1,14 +1,14 @@
 <h2>UserBook Library</h2>
 <% values = {
 "title"=>"Title",
-"description"=>"Description",
+"description"=>"Description"
 "isbn"=>"ISBN Title",
 "author"=>"Author",
 "cover_url"=>"Cover URL",
 "created_at"=>"Added At",
 "updated_at"=>"Last Updated"
 } %>
-<table class = "table">
+<table class = "table table-responsive table-condensed table-striped">
   <tr>
     <% values.each do |key, value| %>
     <th><%= value %></th>
@@ -21,7 +21,9 @@
   <tr class="<%= cycle('oddrow', 'evenrow') -%>">
     <% values.each do |key, value| -%>
     <% if key == "cover_url" %>
-    <td><%= image_tag(book.send(key)) %></td>
+    <td><%= image_tag(book.send(key), class: "img-rounded") %></td>    
+    <% elsif key == "description" %>
+    <td><%= truncate(book.send(key), length: 17, separator: ' ') %></td>
     <% else %>
     <td><%= book.send(key)%> </td>
     <% end %>
@@ -32,3 +34,4 @@
   </tr>
   <% end %>
 </table>
+<%= paginate @books %>
