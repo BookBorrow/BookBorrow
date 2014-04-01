@@ -1,1 +1,10 @@
+<%= form_for([@user, @user_book]) do |f| %>
+  <p>
+  <label for="new_user_book">Enter ISBN</label>
+  <input id="new_user_book" type="text" name="user_book[from_isbn]">
+  </p>
+  <p>
+  <input class="btn btn-primary" type="submit" value="enter">
+  </p>
 
+<% end %>

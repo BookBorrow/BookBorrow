@@ -7,7 +7,7 @@ class UserBook < ActiveRecord::Base
   # params { :user_id => 1,  :user_book => { :from_isbn => 1234 } }
 
   def from_isbn= isbn
-    if book = Book.find_by_isbn(isbn)
+    if book = Book.find_by(:isbn => isbn)
       self.book_id = book.id
     else
       book = Book.create_from_google(isbn)
