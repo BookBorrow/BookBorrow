@@ -12,7 +12,8 @@
 
   <header class="container">
       <nav>
-      <%= link_to "BookBorrow", '#'%>
+      <%= link_to "Main", user_path(current_user)%>
+      <%= link_to "Global Library", books_path%>
         <p class="pull-right">
           <% if user_signed_in? %>
             Logged in as <strong><%= current_user.email %></strong>.
