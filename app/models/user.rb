@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   def library
-    self.books
+    self.user_books
   end
+
 
   def loans
     self.user_books.borrows
