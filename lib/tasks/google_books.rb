@@ -1,6 +1,6 @@
 class GoogleBooksSeeder
 def self.get_books(title)
-  response = GoogleBooks.search(title)
+  response = GoogleBooks.search(title, :api_key => "AIzaSyCvOuvO_hQS_ZULj8Q4vIBttWefh6kv8zY")
   return raise LoadError if !response
 
   response.to_a.each_with_index do |book, i|
