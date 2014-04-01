@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.integer :isbn
-      t.strring :author
+      t.string :author
       t.string :cover_url
 
       t.timestamps

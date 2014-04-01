@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401141125) do
+ActiveRecord::Schema.define(version: 20140401143404) do
+
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "isbn"
+    t.string   "author"
+    t.string   "cover_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "borrows", force: true do |t|
+    t.integer  "user_book_id"
+    t.integer  "user_id"
+    t.date     "borrow_date"
+    t.integer  "duration_in_days"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_books", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
