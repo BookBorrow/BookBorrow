@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-static-top" role="navigation">
   <div class="container-fluid">
 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,6 +46,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+  <div class="container">
   <div>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
@@ -54,13 +55,11 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
   </div>
-
-  <div class="container">
   <%= yield %>
   </div>
-  <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
+ <!--  <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button> -->
 
-  <div id="myModal" class="modal fade">
+  <!-- <div id="myModal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -74,9 +73,9 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button>
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+    </div>
+  </div> -->
 
 </body>
 </html>

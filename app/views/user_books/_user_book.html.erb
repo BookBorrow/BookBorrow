@@ -1,4 +1,4 @@
-<tr class="<%= cycle('oddrow', 'evenrow') -%>">
+<tr data-user-book-id="<%= user_book.id %>" class="<%= cycle('oddrow', 'evenrow') -%>">
   <td><%= user_book.book.title %></td>
   <td><%= truncate(user_book.book.description, length:250, separator: " ", omission: "...") %></td>
   <td><%= user_book.book.isbn %></td>
@@ -23,7 +23,7 @@
 
   <% end %>
   <td>
-    <%= button_tag "Loan", class: "btn btn-primary" %>
+    <%= button_tag "Loan", class: "btn btn-primary", remote: true %>
     <br>
     <br>
     <a data-method="delete" style="font-size: 2em;" rel="nofollow" href="<%= user_book_path(user_book) %>">

@@ -111,6 +111,12 @@ GEM
       activesupport (>= 3.1)
       arel
     polyglot (0.3.4)
+    postmark (1.1.0)
+      json
+      rake
+    postmark-rails (0.5.2)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -225,6 +231,7 @@ DEPENDENCIES
   kaminari
   pg
   pg_search
+  postmark-rails (~> 0.5.2)
   pry
   rails (= 4.1.0.rc2)
   rails_12factor

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'faker'
 
+gem 'postmark-rails', '~> 0.5.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
 # Use SCSS for stylesheets
@@ -26,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'googlebooks'
+gem "pg"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -39,6 +41,8 @@ gem 'googlebooks'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem "pg"
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
@@ -49,12 +53,10 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
-  gem "pg"
   gem "pry"
 end
 
 group :production do
-  gem "pg"
   gem "google-analytics-rails"
   gem "rails_12factor"
 end

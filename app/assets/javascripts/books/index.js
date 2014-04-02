@@ -12,7 +12,6 @@ function updateSearchValues() {
     }).success(function(data) {
         var titles = $.unique(collect(data,
             "title"));
-        console.log(titles);
         $("#booksearch").autocomplete({
             source: titles
         });
@@ -20,7 +19,6 @@ function updateSearchValues() {
 };
 $(document).ready(function() {
     $("#booksearch").bind('input', function() {
-        console.log("Looking for " + $("#booksearch").val());
         updateSearchValues();
     });
 });

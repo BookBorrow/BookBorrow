@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   # borrows
   post 'user_books/:user_book_id/borrows' => 'borrows#create', :as => "user_book_borrows"
 
+  get '/user_books/:user_book_id/borrows/new' => 'borrows#new', :as => 'new_user_book_borrow'
+  get '/user_books/:user_book_id/borrows/:id' => 'borrows#show', :as => 'user_book_borrow'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
