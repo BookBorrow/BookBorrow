@@ -15,7 +15,11 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :postmark
+  binding.pry
+  config.action_mailer.postmark_settings = { :api_key => Rails.application.secrets.postmark_api_key }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
