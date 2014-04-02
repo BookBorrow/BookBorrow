@@ -6,16 +6,20 @@ function updateSearchValues() {
         }
         return results;
     };
-    var availableTags = $.getJSON("/books.json?", {
-        query: $("#booksearch").val(),
-        format: "JSON",
-    }).success(function(data) {
-        var titles = $.unique(collect(data,
-            "title"));
-        $("#booksearch").autocomplete({
-            source: titles
+    var booksearch = $("#booksearch");
+    //Only request if 3 or more characters entered into search
+    if (booksearch.val().length >= 3) {
+        var availableTags = $.getJSON("/books.json?", {
+            query: booksearch.val(),
+            format: "JSON",
+        }).success(function(data) {
+            var titles = $.unique(collect(data,
+                "title"));
+            booksearch.autocomplete({
+                source: titles
+            });
         });
-    });
+    }
 };
 $(document).ready(function() {
     $("#booksearch").bind('input', function() {
