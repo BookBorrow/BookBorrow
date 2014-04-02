@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401201130) do
+ActiveRecord::Schema.define(version: 20140401211843) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -31,6 +34,14 @@ ActiveRecord::Schema.define(version: 20140401201130) do
     t.datetime "updated_at"
     t.boolean  "returned"
     t.string   "borrower_email"
+  end
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_books", force: true do |t|
@@ -55,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140401201130) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

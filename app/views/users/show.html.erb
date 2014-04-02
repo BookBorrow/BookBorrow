@@ -1,5 +1,19 @@
 <h2>My Library</h2>
 
 <%= render "user_books/form" %> 
-<%= render "layouts/library", locals: {library: @library} %>
+<br> 
+<table class = "table table-responsive table-condensed table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>ISBN</th>
+    <th>Author</th>
+    <th>Image</th>
+    <th></th>
+    <th></th>
+  </tr>
 
+<%= render @user_books %>
+</table>
+
+<%= paginate @user_books %>
