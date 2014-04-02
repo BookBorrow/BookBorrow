@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   private 
   def confirm_public
     @user = User.find(params[:id])
-    if !@user.public
+    if !@user.public && (@user != current_user)
       redirect_to root_path, :alert => "Sorry, this user's profile is private."
     end
   end
