@@ -1,9 +1,19 @@
-#email borrower interaction
 
-<%= render @user_book.book %>
-<ul>
-<%= @borrow.borrow_date %>
-<%= @borrow.borrower_email %>
-<%= @borrow.returned %>
-<%= @borrow.duration_in_days %>
+<h1>Lending Details</h1>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Checkout Date: </strong><%= @borrow.borrow_date %></li>
+  <li class="list-group-item" <%= "style=color:red" if @borrow.overdue? %> ><strong>Due Date: </strong><%= @borrow.due_date %></li>
+  <li class="list-group-item">
+    <strong>Borrower Email: </strong><%= @borrow.borrower_email %>
+  <% if @borrow.overdue? %>
+    <button class="btn-warning">Send Reminder</button>
+  <% end %>
+  </li>
+  <li class="list-group-item"><strong>Returned: </strong><%= @borrow.returned %></li>
 </ul>
+
+
+<div class="well">
+<h2>Book</h2>
+<%= render @user_book.book %>
+</div>
