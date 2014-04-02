@@ -18,7 +18,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :postmark
-  binding.pry
   config.action_mailer.postmark_settings = { :api_key => Rails.application.secrets.postmark_api_key }
 
   # Print deprecation notices to the Rails logger.
