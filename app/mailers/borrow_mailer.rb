@@ -1,7 +1,11 @@
 class BorrowMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "michael.prouty@flatironschool.com"
 
   def reminder_email(borrow)
-    mail(to: "michael.prouty@example.com")
+    @borrow = borrow
+    @lender = borrow.user_book.user
+    @book = borrow.user_book.book
+
+    message = mail(to: "michael.prouty@gmail.com", subject: "Testing 123")
   end
 end
