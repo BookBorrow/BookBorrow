@@ -14,7 +14,6 @@ class BooksController < ApplicationController
   end
 
   def find
-
     render json: Book.text_search(params[:query])
   end
 
