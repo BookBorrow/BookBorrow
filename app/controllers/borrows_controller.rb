@@ -27,7 +27,6 @@ class BorrowsController < ApplicationController
 
   # GET /user_books/:user_book_id/borrows/:id/remind
   def remind
-    binding.pry
     BorrowMailer.reminder_email(@borrow).deliver
   end
 
