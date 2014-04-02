@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :books
 
   root 'books#index'
@@ -9,8 +10,10 @@ Rails.application.routes.draw do
 
   get 'users/:id' => 'users#show', as: :user
   delete 'user_books/:id' => 'user_books#destroy', as: :user_book
-
+  
   post 'users/:user_id/user_books/' => 'user_books#create', :as => "user_user_books"
+
+  post 'user_books/:id' => 'borrows#create', :as => "user_book_borrows"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

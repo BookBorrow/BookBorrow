@@ -14,6 +14,7 @@
   </tr>
 
   <% @library.each do |user_book|%>
+
   <tr class="">
       <td><%= link_to user_book.book.title, user_book.book %></td>      
       <td><%= truncate(user_book.book.description, length:250, separator: ' ', omission: '... (continued)') %></td>          

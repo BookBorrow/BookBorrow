@@ -20,7 +20,7 @@ class UserBook < ActiveRecord::Base
     if (self.borrows.empty?)
       return nil
     else
-      User.find(self.borrows.last.user_id).email
+      self.borrows.last
     end
   end
 end
