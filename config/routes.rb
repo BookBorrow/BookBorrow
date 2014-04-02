@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     # root to: "devise/sessions#new"
   end
 
-  get 'users/:id' => 'users#show', as: :user
+  get 'users/:id' => 'users#show', :as => :user
+  get 'users/:id/edit' => 'users#edit', :as => :edit_user
   delete 'user_books/:id' => 'user_books#destroy', as: :user_book
   
   # user_books

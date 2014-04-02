@@ -3,6 +3,10 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.text_search(params[:query]).page(params[:page]).per(10)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  {render json: Book.text_search(params[:query])}
+    end
   end
 
   def show
@@ -10,13 +14,17 @@ class BooksController < ApplicationController
     
   end
 
+  def find
+    render json: Book.text_search(params[:query])
+  end
+
 
   private
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    def book_params
-      params.require(:book).permit(:title, :description, :isbn, :author, :cover_url)
-    end
+  def book_params
+    params.require(:book).permit(:title, :description, :isbn, :author, :cover_url)
+  end
 end

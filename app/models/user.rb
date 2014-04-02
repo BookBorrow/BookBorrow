@@ -12,10 +12,15 @@ class User < ActiveRecord::Base
     self.id == id
   end
 
+
   protected
 
   def set_public
     self.public = true if self.public.nil?
+  end
+
+  def on_loan_collection
+    user_books.select(&:on_loan?)
   end
 
 end
