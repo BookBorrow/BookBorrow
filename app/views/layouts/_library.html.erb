@@ -1,49 +1,33 @@
-<% values = {
-"title"=>"Title",
-"description"=>"Description",
-"isbn"=>"ISBN Title",
-"author"=>"Author",
-"cover_url"=>"Cover URL",
-"created_at"=>"Added At",
-"updated_at"=>"Last Updated"
-} %>
+
 <table class = "table table-responsive table-condensed table-striped">
+
   <tr>
-    <% values.each do |key, value| %>
-    <th><%= value %></th>
-    <% end %>
+    <th>Title</th>
+    <th>Description</th>
+    <th>ISBN</th>
+    <th>Author</th>
+    <th>Cover</th>
+    <th>Added At</th>
+    <th>Last Updated</th>
     <th>Loaned To</th>
     <th>Remove Book</th>
   </tr>
-  
+
   <% @library.each do |user_book|%>
-  <tr class="<%= cycle('oddrow', 'evenrow') -%>">
-    <% values.each do |key, value| -%>
-    <% if key == "cover_url" %>
-    <td><%= image_tag(user_book.book.send(key), class: "img-rounded") %></td>
-    <% elsif key == "description" %>
-    <td><%= truncate(user_book.book.send(key), length:250, separator: ' ', omission: '... (continued)') %></td>
-    <% else %>
-    <td><%= user_book.book.send(key)%> </td>
-    <% end %>
-    <% end %>
-    <%  %>
-    <% if user_book.borrower&& !user_book.borrower.returned %>
-    <td><%= user_book.borrower.borrower_email %></td>
-    <% else %>
-    <td>
-      <%= form_tag("/user_books/#{user_book.id}", method: 'post') do %>
-      <p>
-      <label for="new_borrow"></label>
-      <%= hidden_field_tag 'borrow[user_book_id]', user_book.id %>
-      <input id="new_borrow" type="text" name="borrow[borrower_email]" placeholder="Loan to">
-      <input class="btn btn-primary" type="submit" value="enter">
-      </p>
-      <% end %>
-    </td>
-    <% end %>
-    <td><%= link_to 'Destroy', user_book_path(user_book), method: :delete %></td>
+
+  <tr class="">
+      <td><%= link_to user_book.book.title, user_book.book %></td>      
+      <td><%= truncate(user_book.book.description, length:250, separator: ' ', omission: '... (continued)') %></td>          
+      <td><%= user_book.book.isbn %></td>          
+      <td><%= link_to user_book.book.author, :controller => "books", :query => user_book.book.author %></td>          
+      <td><%= link_to image_tag(user_book.book.cover_url, class: "img-rounded"), user_book.book %></td>          
+      <td><%= user_book.book.created_at.strftime("%a\, %B \'%d") %></td>          
+      <td><%= user_book.book.updated_at.strftime("%a\, %B \'%d") %></td>          
+      <td><%= user_book.borrower %></td>
+      <td><%= link_to 'Destroy', user_book_path(user_book), method: :delete %></td>
   </tr>
   <% end %>
+
+
 </table>
 <%= paginate @library %>

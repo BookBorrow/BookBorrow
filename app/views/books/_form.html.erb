@@ -1,0 +1,5 @@
+<%= form_tag books_path, method: :get do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search by title, etc" %>
+  <%= submit_tag "Search", class: "btn btn-primary"  %>
+<% end %>
+

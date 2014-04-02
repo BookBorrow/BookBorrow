@@ -48,7 +48,7 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
-  gem "sqlite3"
+  gem "pg"
   gem "pry"
 end
 
@@ -62,3 +62,4 @@ gem "bootstrap-sass", "~> 3.1.1"
 gem "devise"
 
 gem 'kaminari'
+gem 'pg_search'
