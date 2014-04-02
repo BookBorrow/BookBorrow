@@ -14,4 +14,7 @@ describe UserBook do
       expect(@user.user_books.first.borrows.count).to eq(1)
     end
   end
+
+  describe "validations" do
+  end
 end

@@ -11,6 +11,7 @@ class BorrowsController < ApplicationController
         :notice => "Could not save."
     end
   end
+
   private
   def borrow_params
     params.require(:borrow).permit(:borrower_email)

@@ -4,7 +4,11 @@ class UserBook < ActiveRecord::Base
   has_many :borrows
 
   def on_loan?
-  	borrows.last.returned?
+  	self.borrows.last && !self.borrows.last.returned?
+  end
+
+  def latest_borrow
+    self.borrows.last
   end
 
   def from_isbn= isbn
@@ -13,14 +17,6 @@ class UserBook < ActiveRecord::Base
     else
       book = Book.create_from_google(isbn)
       self.book_id = book.id
-    end
-  end
-
-  def borrower
-    if (self.borrows.empty?)
-      return nil
-    else
-      self.borrows.last
     end
   end
 end
