@@ -1,25 +1,33 @@
-  <tr class="<%= cycle('oddrow', 'evenrow') -%>">
-    <td><%= user_book.book.title %></td>
-    <td><%= truncate(user_book.book.description, length:250, separator: " ", omission: "...") %></td>
-    <td><%= user_book.book.isbn %></td>
-    <td><%= user_book.book.author %></td>
-    <td><%= image_tag(user_book.book.cover_url, class: "img-rounded") %></td>
+<tr class="<%= cycle('oddrow', 'evenrow') -%>">
+  <td><%= user_book.book.title %></td>
+  <td><%= truncate(user_book.book.description, length:250, separator: " ", omission: "...") %></td>
+  <td><%= user_book.book.isbn %></td>
+  <td><%= user_book.book.author %></td>
+  <td><%= image_tag(user_book.book.cover_url, class: "img-rounded") %></td>
 
-    <% if user_book.on_loan? %>
-      <td><%= user_book.latest_borrow.borrower_email  %></td>
-    <% else %>
+  <% if user_book.on_loan? %>
+    <td><%= user_book.latest_borrow.borrower_email  %></td>
+  <% else %>
 
-      <td>
-        <%= form_tag("/user_books/#{user_book.id}", method: 'post') do %>
-          <p>
-          <label for="new_borrow"></label>
-          <%= hidden_field_tag 'borrow[user_book_id]', user_book.id %>
-          <input id="new_borrow" type="text" name="borrow[borrower_email]" placeholder="Loan to">
-          <input class="btn btn-primary" type="submit" value="enter">
-          </p>
-        <% end %>
-      </td>
+    <td>
 
-    <% end %>
-    <td><%= link_to 'Destroy', user_book_path(user_book), method: :delete %></td>
-  </tr>
+      <%= form_tag("/user_books/#{user_book.id}", method: 'post') do %>
+        <p>
+        <label for="new_borrow"></label>
+        <%= hidden_field_tag 'borrow[user_book_id]', user_book.id %>
+        <input id="new_borrow" type="text" name="borrow[borrower_email]" placeholder="Loan to">
+        <input class="btn btn-primary" type="submit" value="enter">
+        </p>
+      <% end %>
+    </td>
+
+  <% end %>
+  <td>
+    <%= button_tag "Loan", class: "btn btn-primary" %>
+    <br>
+    <br>
+    <a data-method="delete" style="font-size: 2em;" rel="nofollow" href="<%= user_book_path(user_book) %>">
+      <span class="glyphicon glyphicon-trash"></span>
+    </a>
+  </td>
+</tr>

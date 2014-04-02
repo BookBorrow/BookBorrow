@@ -1,6 +1,6 @@
 class BorrowsController < ApplicationController
   def create
-    @user_book = UserBook.find(params[:id])
+    @user_book = UserBook.find(params[:user_book_id])
     @borrow = @user_book.borrows.build(borrow_params)
     @borrow.returned = false
     if @borrow.save
