@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, :only => "show"
-  before_action :authorize_user, :only => "show"
+  before_action :confirm_public, :only => "show"
   
   def index
     @users = User.all
@@ -20,9 +19,10 @@ class UsersController < ApplicationController
   end
 
   private 
-  def authorize_user
-    unless user_signed_in? && params[:id].to_i == current_user.id
-      redirect_to root_path, :alert => "Improper access rights."
+  def confirm_public
+    @user = User.find(params[:id])
+    if !@user.public
+      redirect_to root_path, :alert => "Sorry, this user's profile is private."
     end
   end
 end
