@@ -11,7 +11,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def require_login
+  def require_signin
+    unless user_signed_in?
+      redirect_to new_user_session_path, :alert => "Please sign in."
+    end
+  end
+
+  def require_signin
     unless user_signed_in?
       redirect_to new_user_session_path, :alert => "Please sign in."
     end
