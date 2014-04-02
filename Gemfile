@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'faker'
 
+gem 'postmark-rails', '~> 0.5.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
 # Use SCSS for stylesheets
