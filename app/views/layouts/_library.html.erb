@@ -1,13 +1,4 @@
 
-<% values = {
-"title"=>"Title",
-"description"=>"Description",
-"isbn"=>"ISBN Title",
-"author"=>"Author",
-"cover_url"=>"Cover URL",
-"created_at"=>"Added At",
-"updated_at"=>"Last Updated"
-} %>
 <table class = "table table-responsive table-condensed table-striped">
 
   <tr>
@@ -27,7 +18,7 @@
       <td><%= link_to user_book.book.title, user_book.book %></td>      
       <td><%= truncate(user_book.book.description, length:250, separator: ' ', omission: '... (continued)') %></td>          
       <td><%= user_book.book.isbn %></td>          
-      <td><%= link_to user_book.book.author %></td>          
+      <td><%= link_to user_book.book.author, :controller => "books", :query => user_book.book.author %></td>          
       <td><%= link_to image_tag(user_book.book.cover_url, class: "img-rounded"), user_book.book %></td>          
       <td><%= user_book.book.created_at.strftime("%a\, %B \'%d") %></td>          
       <td><%= user_book.book.updated_at.strftime("%a\, %B \'%d") %></td>          

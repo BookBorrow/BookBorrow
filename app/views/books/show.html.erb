@@ -1,7 +1,5 @@
 <h3><%= @book.title %></h3>
 <p><%= image_tag(@book.cover_url, class: "img-rounded") %>
-<p><%= @book.isbn %> 
-<p><%= @book.author %> 
+<p><%= @book.isbn %>
+<p><%= link_to @book.author, :url => "books?utf8=✓&query=#{@book.author}&commit=Search" %> 
 <p><%= @book.description %> 
-
-
