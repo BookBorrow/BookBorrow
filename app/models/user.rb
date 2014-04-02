@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  def id_is? id
+    self.id == id
+  end
+
 end

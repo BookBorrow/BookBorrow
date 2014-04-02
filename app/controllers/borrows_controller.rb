@@ -12,6 +12,10 @@ class BorrowsController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
   private
   def borrow_params
     params.require(:borrow).permit(:borrower_email)
