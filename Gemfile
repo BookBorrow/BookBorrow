@@ -38,6 +38,8 @@ gem 'googlebooks'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem "pg"
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
@@ -48,12 +50,10 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
-  gem "pg"
   gem "pry"
 end
 
 group :production do
-  gem "pg"
   gem "google-analytics-rails"
   gem "rails_12factor"
 end

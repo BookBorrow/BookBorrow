@@ -1,0 +1,15 @@
+<%= form_for [@user_book, @borrow] do |f| %>
+<div class ="form-group">
+  <%= f.label :borrow_date %>
+  <%= f.date_select :borrow_date %>
+</div>
+<div class ="form-group">
+  <%= f.label :duration_in_days %>
+  <%= f.number_field :duration_in_days %>
+</div>
+<div class ="form-group">
+  <%= f.label :borrower_email %>
+  <%= f.text_field :borrower_email %>
+</div>
+  <%= f.submit %>
+<% end %>
