@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     self.id == id
   end
 
+  def on_loan_collection
+    user_books.select(&:on_loan?)
+  end
+
 end
