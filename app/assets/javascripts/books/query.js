@@ -18,10 +18,13 @@ function showValues() {
             }
         }).done(function(html) {
             bookquery.empty();
+            $("#bookISBN").val("");
             bookquery.prepend(html);
             $(".setISBN").bind('click', function() {
-                console.log("Click");
                 $("#bookISBN").val($(this).parent().data("isbn"));
+                //Wipe out all selected values and set this one to black.
+                $(this).parent().siblings().css('background-color', 'white');
+                $(this).parent().css('background-color', 'green');
             });
         });
     } else {
