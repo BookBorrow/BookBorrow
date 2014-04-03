@@ -1,7 +1,17 @@
-<ul class="list-group container-fluid col-md-offset-3">
+
+<table id="bookresultspartial" class="table-responsive table-bordered">
+  <% counter = 0 %>
+  <tr>
   <% @books.each do |book|%>
-  <li class="list-group-item container-fluid col-md-4 clearfix text-overflow" data-ISBN="<%=book.isbn%>">
+  <td class="bookitem", data-ISBN="<%=book.isbn%>">
     <%= image_tag(book.cover_url, :class => "setISBN")%>
-  </li>
+  </td>
+  <% counter+=1 %>
+  <% if counter %5 ==0 %>
+    </tr>
+    <tr>
   <% end %>
-</ul>
+  <% end %>
+</tr>
+</table>
+
