@@ -1,3 +1,4 @@
+
 <div class="container col-md-12 border-top">
 <h4>Available Library</h4>
 <hr>
@@ -6,6 +7,7 @@
 				<% books[i..(i+9 % books.length)].each do |book| %>
 					<div class="col-md-1 col-xs-4 col-sm-21 unpadded">
 						<% if current_user == @user %>
+						
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), new_user_book_borrow_path(book)) %>
 						<% else %>
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), new_user_book_borrow_path(book)) %>

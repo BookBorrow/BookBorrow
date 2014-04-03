@@ -34,7 +34,9 @@ class User < ActiveRecord::Base
   end
 
   def available_library
-    user_books.select(&:borrowable?)
+    user_books.select do |book|
+      book.persisted? && book.borrowable? 
+    end
   end
 
   def on_loan_collection
