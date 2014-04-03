@@ -1,35 +1,31 @@
-<div class="row" id="borrow_<%= borrow.id %>">
-<div class="col-xs-2 text-center">
-  <%= image_tag borrow.user_book.book.cover_url %>
-</div>
-
-<div class="col-xs-4">
-<ul class="list-group">
-<li class="list-group-item"><strong>Checkout Date: </strong><%= borrow.borrow_date %></li>
-<li class="list-group-item" <%= "style=color:red" if borrow.overdue? %> >
-<strong>Due Date: </strong><%= borrow.due_date %>
-  </li>
-  <li class="list-group-item">
-  <strong>Borrower Email: </strong><%= borrow.borrower_email %>
-</li>
-<li class="list-group-item">
-<%= form_for [borrow.user, borrow], remote: true do |f| %>
-  <%= f.label :returned %>
-  <%= f.check_box :returned %>
-<% end %>
-</li>
-</ul>
-</div>
-
-<div class="col-xs-4">
-  <a data-method="delete", href="<%= user_borrow_path(borrow.user, borrow) %>">
-    <span class="glyphicon glyphicon-trash"></span>
-  </a>
-  <%= link_to "show", user_borrow_path(borrow.user, borrow) %>
+<tr id="borrow_<%= borrow.id %>">
+  <td><%= image_tag borrow.user_book.book.cover_url %></td>
+  <td><%= borrow.borrow_date %></td>
   <% if borrow.overdue? %>
-    <%= link_to "Send Reminder", remind_user_borrow_path(borrow.user_book, borrow), :class => "btn btn-danger", :method => :post %>
+    <td style="color:red"><%= time_ago_in_words borrow.due_date %></td>
+  <% else %>
+    <td><%= time_ago_in_words borrow.due_date%></td>
   <% end %>
-</div>
 
-</div>
-
+  <td><%= borrow.borrower_email %></td>
+  <td>
+    <%= form_for [borrow.user, borrow], remote: true do |f| %>
+      <%= f.check_box :returned %>
+    <% end %>
+  </td>
+  <td>
+    <% if borrow.overdue? %>
+      <%= link_to remind_user_borrow_path(borrow.user_book, borrow), 
+        :data => {:confirm => "Send #{borrow.borrower_email} a message?"},  
+        :class => "big-glyphicon",
+        :method => :post do %>
+        <span class="glyphicon glyphicon-envelope"></span>
+      <% end %>
+    <% end %>
+    <br>
+    <a data-confirm="Are you sure?" data-method="delete", class="big-glyphicon", 
+      href="<%= user_borrow_path(borrow.user, borrow) %>">
+      <span class="glyphicon glyphicon-trash"></span>
+    </a>
+  </td>
+</tr>
