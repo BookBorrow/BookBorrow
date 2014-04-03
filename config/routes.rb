@@ -15,13 +15,22 @@ Rails.application.routes.draw do
   # user_books
   post 'users/:user_id/user_books/' => 'user_books#create', :as => "user_user_books"
 
-  # borrows
+  # borrows 
+  # =======
+
+  # scoped to user_book
   post 'user_books/:user_book_id/borrows' => 'borrows#create', :as => "user_book_borrows"
-
   get '/user_books/:user_book_id/borrows/new' => 'borrows#new', :as => 'new_user_book_borrow'
-  get '/user_books/:user_book_id/borrows/:id' => 'borrows#show', :as => 'user_book_borrow'
+ 
+  # scoped to user
+  get 'users/:id/borrows' => 'borrows#index', :as => 'user_borrows'
+  get '/users/:user_id/borrows/:id' => 'borrows#show', :as => 'user_borrow'
+  patch '/users/:user_id/borrows/:id' => 'borrows#update'
+  delete 'users/:user_id/borrows/:id' => 'borrows#destroy'
+  
+  # special
+  post '/users/:user_id/borrows/:id/remind' => 'borrows#remind', :as => 'remind_user_borrow'
 
-  get '/user_books/:user_book_id/borrows/:id/remind' => 'borrows#remind', :as => 'remind_user_book_borrow'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
