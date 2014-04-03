@@ -4,11 +4,13 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
   <tr>
-    <td>One</td>
-    <td>One</td>
-    <td>One</td>
-    <td>One</td>
+    <%= render partial: 'borrow', collection: borrows %>
+    <% @placeholders.times do %>
+      <%= render partial: 'borrow_placeholder' %>
+    <% end %>
+    <td class="view_all" style="vertical-align:bottom" ><%= link_to "View all", user_borrows_path(@user)%></td>
   </tr>
 </table>

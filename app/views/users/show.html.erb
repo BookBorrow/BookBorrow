@@ -5,7 +5,7 @@
 			<%= render :partial => "profile", :locals => {:user => @user} %>
 		</div>
 		<div class="col-md-8">
-	 		<%= render :partial => "borrows", :locals => {:books => @user.user_books, :user => @user} %>
+    <%= render :partial => "borrows", :locals => {:borrows => @active_borrows } %>
     </div>
 	 </div>
 	 <div class="row">

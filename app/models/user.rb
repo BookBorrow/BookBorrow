@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     Borrow.joins(:user_book).where(:user_books => { :user_id => self.id })
   end
 
+  def active_borrows
+    Borrow.active.joins(:user_book).where(:user_books => { :user_id => self.id })
+  end
+
 
   def display_name
     return name if name

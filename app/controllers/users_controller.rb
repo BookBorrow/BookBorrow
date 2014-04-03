@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, :only => ["show"]
   before_action :confirm_public, :only => "show"
   
   def index
@@ -7,7 +8,8 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
+    @active_borrows = @user.active_borrows.limit(4)
+    @placeholders =  4 - @active_borrows.length
     @user_books = @user.user_books.page(params[:page]).per(10)
     @user_book = UserBook.new
     @borrow = Borrow.new
@@ -24,5 +26,9 @@ class UsersController < ApplicationController
     if !@user.public && (@user != current_user)
       redirect_to root_path, :alert => "Sorry, this user's profile is private."
     end
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
   end
 end
