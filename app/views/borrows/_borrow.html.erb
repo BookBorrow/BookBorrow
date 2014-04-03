@@ -1,25 +1,31 @@
 <tr id="borrow_<%= borrow.id %>">
   <td><%= image_tag borrow.user_book.book.cover_url %></td>
   <td><%= borrow.borrow_date %></td>
-  <td <%= "style=color:red" if borrow.overdue? %> ><%= borrow.due_date %></td>
-  <td><%= borrow.borrower_email %></td>
+  <% if borrow.overdue? %>
+    <td style="color:red"><%= time_ago_in_words borrow.due_date %></td>
+  <% else %>
+    <td><%= time_ago_in_words borrow.due_date%></td>
+  <% end %>
 
+  <td><%= borrow.borrower_email %></td>
   <td>
     <%= form_for [borrow.user, borrow], remote: true do |f| %>
       <%= f.check_box :returned %>
     <% end %>
   </td>
   <td>
-    <a data-confirm="Are you sure?" data-method="delete", style="font-size:2em" 
+    <% if borrow.overdue? %>
+      <%= link_to remind_user_borrow_path(borrow.user_book, borrow), 
+        :data => {:confirm => "Send #{borrow.borrower_email} a message?"},  
+        :class => "big-glyphicon",
+        :method => :post do %>
+        <span class="glyphicon glyphicon-envelope"></span>
+      <% end %>
+    <% end %>
+    <br>
+    <a data-confirm="Are you sure?" data-method="delete", class="big-glyphicon", 
       href="<%= user_borrow_path(borrow.user, borrow) %>">
       <span class="glyphicon glyphicon-trash"></span>
     </a>
-    <br>
-    <% if borrow.overdue? %>
-      <%= link_to "Send Reminder", remind_user_borrow_path(borrow.user_book, borrow), 
-        :class => "btn btn-danger", 
-        :data => {:confirm => "Send #{borrow.borrower_email} a message?"},  
-        :method => :post %>
-    <% end %>
   </td>
 </tr>

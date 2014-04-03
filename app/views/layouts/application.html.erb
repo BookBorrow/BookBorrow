@@ -33,7 +33,7 @@
             <%= image_tag mini_avatar(current_user) %>
             <%= current_user.email %></strong><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Global Library", books_path %></li>
+            <li><%= link_to "Browse", books_path %></li>
             <li class="divider"></li>
             <li><%= link_to "My Library", user_path(current_user) %></li>
             <li><%= link_to "Account", edit_user_registration_path(current_user) %></li>
