@@ -10,40 +10,22 @@
          <%= text_field_tag :query, params[:name], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'booksearch'%>
         <br>
         <%= label_tag("Borrower's Name") %>
-         <%= text_field_tag :query, params[:borrowername], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
+         <%= text_field_tag :query, params[:borrower_name], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
         <br>
          <%= label_tag("Borrower's Email") %>
-         <%= text_field_tag :query, params[:email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
+         <%= text_field_tag :query, params[:borrower_email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
         <br>
-        <%= label_tag("Remind them in:") %>
-         <%= date_field_tag params[:email] %>
+         <%= label_tag("Due date (days from today)") %>
+         <%= number_field_tag :query, params[:duration_in_days], class: "form-control max-width-80", placeholder: "14" %>
+        <br>
+        <br>
         <br>
         <br>
         <%= submit_tag "Submit", class: "btn btn-primary"  %>
         <% end %>
+        <br>
         <p><i>*We promise to only email them once.</i></p>
       </div>
     </div>
   </div>
 </div>
-
-      
-      <!--
-      <h3>Programming Books</h3>
-      <% button_to 'Add All To Library', {class: "btn btn-primary" } %>
-      <!-- Quickly reduce the work of building a library -->
-      <% @programming_books[1..7].each do |book| %>
-      <% link_to image_tag(book.cover_url), book %>
-      <% end %>
-      <!-- <h3>New York Times Bestsellers</h3> -->
-      <% button_to 'Add All To Library', {class: "btn btn-primary" } %>
-      <!-- Quickly reduce the work of building a library  -->
-      <% @nyt_bestsellers[1..7].each do |book| %>
-      <% link_to image_tag(book.cover_url), book %>
-      <% end %>
-      <!-- <h3>Programming Books</h3> -->
-      <% button_to 'Add All To Library', {class: "btn btn-primary" } %>
-      <!-- Quickly reduce the work of building a library -->
-      <% @programming_books[1..7].each do |book| %>
-      <% link_to image_tag(book.cover_url), book %>
-      <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403141655) do
+ActiveRecord::Schema.define(version: 20140403152816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140403141655) do
     t.datetime "updated_at"
     t.boolean  "returned"
     t.string   "borrower_email"
-    t.string   "name"
+    t.string   "borrower_name"
   end
 
   create_table "pg_search_documents", force: true do |t|

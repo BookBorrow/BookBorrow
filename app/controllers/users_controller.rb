@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-
   def show
     @user = User.find(params[:id])
     @user_books = @user.user_books.page(params[:page]).per(10)

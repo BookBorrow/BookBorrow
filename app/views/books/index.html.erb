@@ -18,7 +18,8 @@
           <small><%= link_to book.author, :controller => "books", :query => book.author %></small>
           </h3>
           
-          <% if current_user %><small><%= button_to 'Add To Library', user_user_books_path(current_user, :user_book =>{:from_isbn=> book.isbn}),method: :create %></small><% end %>
+          <%= render :partial => "button", :locals => {:book => book } %>
+
           <span class="text-muted">ISBN <%= book.isbn %> </span>
           <p class="text-muted">
           <strong>Synopsis</strong><br />
