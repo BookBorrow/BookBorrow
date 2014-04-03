@@ -97,6 +97,19 @@ form.form-inline input.max-width-80{
 	float: left;
 }
 
+img .setISBN{
+  max-height: 90%;
+  max-width: 90%;
+}
+
+.bookitem{
+  padding: 5px;
+  max-height: 90%;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;   
+}
+
 ul h3.profile-name{
 	overflow: hidden;
 	text-overflow: ellipsis;
