@@ -7,19 +7,20 @@ class BorrowsController < ApplicationController
   end
   
   def create
-    
-
-    @user_book = UserBook.find(params[:user_book_id])
-    @borrow = @user_book.borrows.build(borrow_params)
-    @borrow.returned = false
-
-
-    if @borrow.save
-      redirect_to [@user_book.user, @borrow], 
-        :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
+    if current_user.nil?
+      session[:forwarding] = params
+      redirect_to new_user_registration_path
     else
-      redirect_to @user_book.user,
-        :notice => "Could not save."
+      @user_book = UserBook.find(params[:user_book_id])
+      @borrow = @user_book.borrows.build(borrow_params)
+      @borrow.returned = false
+      if @borrow.save
+        redirect_to [@user_book.user, @borrow], 
+          :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
+      else
+        redirect_to @user_book.user,
+          :notice => "Could not save."
+      end
     end
   end
 

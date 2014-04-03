@@ -16,9 +16,8 @@ class UserBooksController < ApplicationController
 
   # POST /users/:user_id/user_books
   def create
-    
     if current_user.nil?
-      session[:user_book] = params
+      session[:forwarding] = params
       redirect_to new_user_registration_path
     else
       @user = User.find(params[:user_id])
