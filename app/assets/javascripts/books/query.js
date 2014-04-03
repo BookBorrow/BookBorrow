@@ -20,6 +20,7 @@ function showValues() {
             bookquery.empty();
             bookquery.prepend(html);
             $(".setISBN").bind('click', function() {
+                console.log("Click");
                 $("#bookISBN").val($(this).parent().data("isbn"));
             });
         });

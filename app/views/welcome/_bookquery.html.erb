@@ -1,13 +1,10 @@
-<ul class="list-group container-fluid col-md-offset-4">
+<ul class="list-group container-fluid col-md-offset-3">
   <% @books.each do |book|%>
-  <li class="list-group-item container-fluid" data-ISBN="<%=book.isbn%>">
-    <p><%= link_to image_tag(book.cover_url), book %></p>
+  <li class="list-group-item container-fluid col-md-offset-6 text-overflow" data-ISBN="<%=book.isbn%>">
     <h3><%= link_to book.title, book %>
-    <br>
-    <small><%= link_to book.author, :controller => "books", :query => book.author %></small>
     </h3>
-    <span class="text-muted">ISBN <div class="ISBN"><%= book.isbn %></div> </span>
-    <br>
+    <h4><%= link_to book.author, :controller => "books", :query => book.author %></h4>
+    <p><%= link_to image_tag(book.cover_url), book %></p> 
     <%=  button_tag ("Loan"), class: :setISBN%>
   </li>
   <% end %>
