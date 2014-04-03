@@ -5,9 +5,9 @@
     <div class="border-form-div col-sm-12">
       
       <div class="form-group">
-        <%= form_tag books_path, method: :get, class: "form-inline" do %>
+        <%= form_tag books_path, method: :get, class: "form-inline"  do %>
         <%= label_tag("Book Name") %>
-         <%= text_field_tag :query, params[:name], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'booksearch'%>
+         <%= text_field_tag :query, params[:name], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'wbooksearch'%>
         <br>
         <%= label_tag("Borrower's Name") %>
          <%= text_field_tag :query, params[:borrowername], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
@@ -19,11 +19,14 @@
          <%= date_field_tag params[:email] %>
         <br>
         <br>
+        <%= hidden_field_tag(:bookISBN)%>
         <%= submit_tag "Submit", class: "btn btn-primary"  %>
         <% end %>
         <p><i>*We promise to only email them once.</i></p>
       </div>
-    </div>
+    </div >
+    <!-- Partial for book query -->
+    <div id="bookquery" class="col-md-8"></div>
   </div>
 </div>
 

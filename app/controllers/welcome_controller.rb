@@ -12,4 +12,11 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def query
+    # raise 'error'
+    puts ("Looking for #{params[:query]}")
+    @books = Book.text_search(params[:query])
+    render :partial =>"bookquery"
+  end
+
 end
