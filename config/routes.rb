@@ -14,9 +14,11 @@ Rails.application.routes.draw do
 
   # user_books
   post 'users/:user_id/user_books/' => 'user_books#create', :as => "user_user_books"
+  post '/user_books' => 'user_books#create', :as => "create_user_book"
+  
+  # borrows 
+  post '/borrows' => 'borrows#create', :as => "create_borrow"
 
-  # borrows
-  # =======
 
   # scoped to user_book
   post 'user_books/:user_book_id/borrows' => 'borrows#create', :as => "user_book_borrows"

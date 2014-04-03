@@ -1,8 +1,5 @@
 <div class="row">
 	<ul class="list-group">
-		<li class="list-group-item">
-			<h3 class="profile-name"><%= user.display_name %></h3>
-		</li>
 		<li class="list-group-item text-center">
 			<div class="container-fluid">
 			<%= image_tag avatar_for(user, 300), :class => "img-responsive profile-image" %>
@@ -17,8 +14,10 @@
 	    <li class="list-group-item">
 	    	<span><strong>Books on Loan:</strong> <%= user.number_of_loans %></strong></span>
 	    </li>
+	    <% if current_user == user %>
 	    <li class="list-group-item">
 	    	<%= render "user_books/form" %>
 	    </li>
+	    <% end %>
     </ul>
 </div>

@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     on_loan_collection.count
   end
 
+  def available_library
+    user_books.select(&:borrowable?)
+  end
+
   def on_loan_collection
     user_books.select(&:on_loan?)
   end
@@ -41,10 +45,6 @@ class User < ActiveRecord::Base
 
   def set_public
     self.public = true if self.public.nil?
-  end
-
-  def on_loan_collection
-    user_books.select(&:on_loan?)
   end
 
 end

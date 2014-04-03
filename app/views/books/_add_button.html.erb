@@ -1,0 +1,8 @@
+
+<% if current_user.nil? %>
+  <%= button_to 'Add To Library', create_user_book_path(:user_book => { :from_isbn => book.isbn }), method: :post %>
+<% elsif [book.id] == current_user.user_books.where(:book_id => book.id).pluck(:book_id) %>
+  <%= '' %>
+<% else %>
+  <%= button_to 'Add To Library', user_user_books_path(current_user, :user_book => {:from_isbn=> book.isbn}), method: :post %>  
+<% end %>

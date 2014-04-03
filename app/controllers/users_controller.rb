@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-
   def show
     @active_borrows = @user.active_borrows.limit(4)
     @placeholders =  4 - @active_borrows.length

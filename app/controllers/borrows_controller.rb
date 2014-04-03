@@ -1,15 +1,19 @@
 class BorrowsController < ApplicationController
-  before_action :set_borrow, :only => [:show, :destroy, :remind, :update]
-  before_action :set_user, :only => [:destroy]
+  before_action :set_borrow,      :only => [:show, :destroy, :remind, :update]
+  before_action :set_user,        :only => [:destroy]
 
   def index
     @borrows = User.find(params[:id]).borrows
   end
   
   def create
+    
+
     @user_book = UserBook.find(params[:user_book_id])
     @borrow = @user_book.borrows.build(borrow_params)
     @borrow.returned = false
+
+
     if @borrow.save
       redirect_to [@user_book.user, @borrow], 
         :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
@@ -49,7 +53,7 @@ class BorrowsController < ApplicationController
   private
 
   def borrow_params
-    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned)
+    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned, :due_date)
   end
 
   def set_borrow

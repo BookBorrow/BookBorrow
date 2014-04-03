@@ -1,12 +1,5 @@
 <table class="table">
   <tr>
-    <th>Borrows</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr>
     <%= render partial: 'borrow', collection: borrows %>
     <% @placeholders.times do %>
       <%= render partial: 'borrow_placeholder' %>
