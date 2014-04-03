@@ -1,15 +1,14 @@
-	
-<div class="container">
+<h2><%= @user.display_name %></h3>
+<div class="container col-xs-12">
 	<div class="row">
-
-		<div class="col-md-3 col-sm-4 col-lg-2">
+		<div class="col-md-3 col-sm-3 col-xs-12">
 			<%= render :partial => "profile", :locals => {:user => @user} %>
 		</div>
 
-		<div class="col-md-8 col-sm-7 col-lg-9">
+		<div class="col-md-8 col-sm-6 col-xs-12 col-lg-9">
+    		<h4>Borrows</h4>
    		 	<%= render :partial => "borrows", :locals => {:borrows => @active_borrows } %>
-   		
-		 	<%= render :partial => "books", :locals => {:user => @user, :books => @user.user_books.reject{|b| b.id==nil}} %>
+		 	<%= render :partial => "books", :locals => {:user => @user, :books => @user.available_library} %>
 	 	</div>
 
 	 </div>
