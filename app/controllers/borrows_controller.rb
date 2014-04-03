@@ -53,7 +53,7 @@ class BorrowsController < ApplicationController
   private
 
   def borrow_params
-    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned)
+    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned, :due_date)
   end
 
   def set_borrow

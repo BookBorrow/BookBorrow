@@ -16,15 +16,14 @@ class User < ActiveRecord::Base
     Borrow.joins(:user_book).where(:user_books => { :user_id => self.id })
   end
 
+  def on_loan_collection
+    user_books.select(&:on_loan?)
+  end
 
   protected
 
   def set_public
     self.public = true if self.public.nil?
-  end
-
-  def on_loan_collection
-    user_books.select(&:on_loan?)
   end
 
 end

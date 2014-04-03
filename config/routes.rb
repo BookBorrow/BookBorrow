@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :books 
+  resources :books
 
   root 'welcome#index'
-  devise_for :users 
+  devise_for :users
   devise_scope :user do
     # root to: "devise/sessions#new"
   end
@@ -11,34 +11,36 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show', :as => :user
   get 'users/:id/edit' => 'users#edit', :as => :edit_user
   delete 'user_books/:id' => 'user_books#destroy', as: :user_book
-  
+
   # user_books
   post 'users/:user_id/user_books/' => 'user_books#create', :as => "user_user_books"
   post '/user_books' => 'user_books#create', :as => "create_user_book"
+  
   # borrows 
   post '/borrows' => 'borrows#create', :as => "create_borrow"
+
 
   # scoped to user_book
   post 'user_books/:user_book_id/borrows' => 'borrows#create', :as => "user_book_borrows"
   get '/user_books/:user_book_id/borrows/new' => 'borrows#new', :as => 'new_user_book_borrow'
- 
+
   # scoped to user
   get 'users/:id/borrows' => 'borrows#index', :as => 'user_borrows'
   get '/users/:user_id/borrows/:id' => 'borrows#show', :as => 'user_borrow'
   patch '/users/:user_id/borrows/:id' => 'borrows#update'
   delete 'users/:user_id/borrows/:id' => 'borrows#destroy'
-  
+
   # special
   post '/users/:user_id/borrows/:id/remind' => 'borrows#remind', :as => 'remind_user_borrow'
 
-
+  get 'welcome/query' => 'welcome#query'
   get '/welcome' => 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

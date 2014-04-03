@@ -1,0 +1,19 @@
+
+
+<% if current_user.nil? %>
+  <%= button_to 'Loan' %>
+
+<!-- book is NOT in the library -->
+<% elsif [book.id] != current_user.user_books.where(:book_id => book.id).pluck(:book_id) %>
+  <%= button_to 'Add To Library & Loan' %>
+
+<!-- book is in the library BUT on loan -->
+<% elsif current_user.on_loan_collection.any? {|user_book| user_book.book_id == book.id } %>
+  <h3><%= 'On Loan' %></h3>
+  <%= button_to 'Send Reminder' %>
+
+<!-- book is in the library and NOT on loan -->
+<% else %>
+  <%= button_to 'Loan' %>
+
+<% end %>
