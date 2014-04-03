@@ -12,7 +12,6 @@ namespace :gb do
     require_relative "google_books.rb"
 
     @titles_array.flatten.each do |title|
-
       begin
         GoogleBooksSeeder.get_books(title)
       rescue LoadError

@@ -16,7 +16,10 @@ function updateSearchValues() {
             var titles = $.unique(collect(data,
                 "title"));
             booksearch.autocomplete({
-                source: titles
+                source: titles,
+                select: function(event, ui) {
+                    window.location.href = "/books?utf8=%E2%9C%93&query=" + ui.item.value + "&commit=search";
+                }
             });
         });
     }
