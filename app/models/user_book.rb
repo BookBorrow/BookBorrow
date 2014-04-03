@@ -3,9 +3,10 @@ class UserBook < ActiveRecord::Base
   belongs_to :user
   has_many :borrows
 
-  def on_loan?
+  def borrowed?
   	self.borrows.last && !self.borrows.last.returned?
   end
+
 
   def author
     book.author
@@ -24,6 +25,18 @@ class UserBook < ActiveRecord::Base
   end
 
   def latest_borrow
+    self.borrows.last
+  end
+
+  def borrowable?
+    !self.borrowed?
+  end
+
+  def on_loan?
+    self.borrowed?
+  end
+
+  def current_borrow
     self.borrows.last
   end
 
