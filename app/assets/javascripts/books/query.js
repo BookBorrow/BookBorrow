@@ -24,7 +24,7 @@ function showValues() {
                 $("#bookISBN").val($(this).parent().data("isbn"));
                 //Wipe out all selected values and set this one to black.
                 $(".bookitem").css('background-color', 'white');
-                $(this).parent(".bookitem").css('background-color', 'lightgreen');
+                $(this).parent(".bookitem").css('background-color', 'lightgrey');
             });
         });
     } else {
