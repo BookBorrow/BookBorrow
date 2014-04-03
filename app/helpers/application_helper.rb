@@ -8,6 +8,10 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{pixels}"
   end
 
+  def strip_isbn(isbn)
+  	isbn.gsub(/\D/, "")
+  end
+
   def mini_avatar(user)
     pixels = 50
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)

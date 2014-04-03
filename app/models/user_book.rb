@@ -45,6 +45,7 @@ class UserBook < ActiveRecord::Base
       self.book_id = book.id
     else
       book = Book.create_from_google(isbn)
+      binding.pry
       self.book_id = book.id
     end
   end
