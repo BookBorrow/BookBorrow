@@ -1,4 +1,5 @@
 class BorrowsController < ApplicationController
+  before_action :set_borrow, :only => [:show, :remind]
   
   def create
     @user_book = UserBook.find(params[:user_book_id])
@@ -21,8 +22,12 @@ class BorrowsController < ApplicationController
 
   def show
     @user_book = UserBook.find(params[:user_book_id])
-    @borrow = Borrow.find(params[:id])
     @books = Book.all
+  end
+
+  # GET /user_books/:user_book_id/borrows/:id/remind
+  def remind
+    BorrowMailer.reminder_email(@borrow).deliver
   end
 
   private
@@ -31,4 +36,7 @@ class BorrowsController < ApplicationController
     params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days)
   end
 
+  def set_borrow
+    @borrow = Borrow.find(params[:id])
+  end
 end

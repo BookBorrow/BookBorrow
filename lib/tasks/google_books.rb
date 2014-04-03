@@ -11,7 +11,11 @@ def self.get_books(title)
         :author => book.authors_array.first,
         :description => book.description,
         :cover_url => book.image_link,
-        :isbn => book.isbn_13
+        :isbn => book.isbn_13,
+        :categories => book.categories,
+        :ratings_count => book.ratings_count,
+        :average_rating => book.average_rating,
+        :page_count => book.page_count
       })
     rescue
       puts "Could not create #{title}, (##{i}) : ("

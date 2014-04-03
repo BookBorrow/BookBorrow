@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
+  before_save :set_public
 
   def id_is? id
     self.id == id
   end
+
 
   def display_name
     return name if name
@@ -22,6 +24,16 @@ class User < ActiveRecord::Base
 
   def number_of_loans
     on_loan_collection.count
+  end
+
+  def on_loan_collection
+    user_books.select(&:on_loan?)
+  end
+
+  protected
+
+  def set_public
+    self.public = true if self.public.nil?
   end
 
   def on_loan_collection

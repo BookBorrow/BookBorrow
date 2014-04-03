@@ -25,7 +25,8 @@
        <span class="text-muted">ISBN <%= book.isbn %> </span>
         <p class="text-muted">
         <strong>Synopsis</strong><br />
-        <%= book.description %></p>
+        <td><%= truncate(book.description, length:250, separator: " ", omission: "...") %></td>
+        
       </div>
 
       </div>
@@ -33,9 +34,5 @@
   </li>
   <% end %>
 </ul>
-
-
-
-
 
 <%= paginate @books %>

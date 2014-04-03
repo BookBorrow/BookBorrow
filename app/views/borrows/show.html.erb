@@ -1,13 +1,14 @@
-
 <h1>Lending Details</h1>
 <ul class="list-group">
   <li class="list-group-item"><strong>Checkout Date: </strong><%= @borrow.borrow_date %></li>
   <li class="list-group-item" <%= "style=color:red" if @borrow.overdue? %> ><strong>Due Date: </strong><%= @borrow.due_date %></li>
   <li class="list-group-item">
     <strong>Borrower Email: </strong><%= @borrow.borrower_email %>
-  <% if @borrow.overdue? %>
-    <button class="btn-warning">Send Reminder</button>
-  <% end %>
+
+    <% if @borrow.overdue? %>
+      <%= link_to "Send Reminder", remind_user_book_borrow_path(@user_book, @borrow), :class => "btn btn-danger" %>
+    <% end %>
+
   </li>
   <li class="list-group-item"><strong>Returned: </strong><%= @borrow.returned %></li>
 </ul>

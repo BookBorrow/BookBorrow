@@ -11,7 +11,7 @@ namespace :gb do
     require_relative "../../db/seed_titles.rb"
     require_relative "google_books.rb"
 
-    @titles_array.each do |title|
+    @titles_array.flatten.each do |title|
 
       begin
         GoogleBooksSeeder.get_books(title)

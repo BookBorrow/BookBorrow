@@ -1,5 +1,5 @@
 class UserBooksController < ApplicationController
-  before_action :require_login
+  before_action :require_signin
   before_action :authenticate_on_create, :only => "create"
   before_action :authenticate_on_destroy, :only => "destroy"
 

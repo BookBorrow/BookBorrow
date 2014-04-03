@@ -1,0 +1,47 @@
+<div class="container">
+<div class="row">
+<h2>Share your books <i>and</i> get them back.</h2>
+<br>
+<h4>Keep track of who's borrowing your books with BookBorrow.</h4>
+<br>
+<br>
+<div class="border-form-div col-sm-12">
+<form>
+Book Name <input type="text" name="firstname"><br>
+Borrow's Name <input type="text" name="lastname">
+<br>
+<br>
+<p>Send them an automatic email reminder? <i>(Optional)</i></p>
+Borrower's Email* <input type="text" name="lastname">
+Remind them in: <input type="text" name="lastname" placeholder="2 weeks">
+<input type="submit" value="Submit">
+</form>
+<br>
+<p><i>*We promise to only email them once.</i></p>
+
+
+
+
+
+<!-- 
+
+<h3>Programming Books</h3>
+<% button_to 'Add All To Library', {class: "btn btn-primary" } %>
+<!-- Quickly reduce the work of building a library --> 
+<% @programming_books[1..7].each do |book| %>
+  <% link_to image_tag(book.cover_url), book %>
+<% end %>
+
+<!-- <h3>New York Times Bestsellers</h3> -->
+<% button_to 'Add All To Library', {class: "btn btn-primary" } %>
+<!-- Quickly reduce the work of building a library  -->
+<% @nyt_bestsellers[1..7].each do |book| %>
+  <% link_to image_tag(book.cover_url), book %>
+<% end %>
+
+<!-- <h3>Programming Books</h3> -->
+<% button_to 'Add All To Library', {class: "btn btn-primary" } %>
+<!-- Quickly reduce the work of building a library --> 
+<% @programming_books[1..7].each do |book| %>
+  <% link_to image_tag(book.cover_url), book %>
+<% end %>
