@@ -6,12 +6,11 @@
   <td><%= image_tag(user_book.book.cover_url, class: "img-rounded") %></td>
 
   <% if user_book.on_loan? %>
-    <td><%= user_book.latest_borrow.borrower_email  %></td>
+    <td><%= link_to "Borrowed", user_borrow_path(user_book.user, user_book.current_borrow), class: "btn btn-danger" %></td>
+  <% else %>
+    <td><%= link_to "Loanable", new_user_book_borrow_path(user_book), class: "btn btn-success" %></td>
   <% end %>
   <td>
-    <%= link_to "Loan", new_user_book_borrow_path(user_book), class: "btn btn-primary" %>
-    <br>
-    <br>
     <a data-method="delete" style="font-size: 2em;" rel="nofollow" href="<%= user_book_path(user_book) %>">
       <span class="glyphicon glyphicon-trash"></span>
     </a>
