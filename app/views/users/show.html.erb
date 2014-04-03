@@ -1,12 +1,12 @@
 	
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<%= render :partial => "profile", :locals => {:user => @user} %>
 		</div>
-		<div class="col-md-6">
-	 		<%#= render :partial => "borrows", :locals => {:books => @user.user_books, :user => @user} %>
-	 	</div>
+		<div class="col-md-8">
+	 		<%= render :partial => "borrows", :locals => {:books => @user.user_books, :user => @user} %>
+    </div>
 	 </div>
 	 <div class="row">
 	 	<div class="col-md-8">
