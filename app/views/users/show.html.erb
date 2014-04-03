@@ -1,8 +1,27 @@
-<h2>My Library</h2>
+	
+<div class="container">
+	<div class="row">
 
-<%= image_tag avatar_for(@user) %>
+		<div class="col-md-3 col-sm-4 col-lg-2">
+			<%= render :partial => "profile", :locals => {:user => @user} %>
+		</div>
 
-<%= render "user_books/form" %> 
+		<div class="col-md-8 col-sm-7 col-lg-9">
+   		 	<%= render :partial => "borrows", :locals => {:borrows => @active_borrows } %>
+   		
+		 	<%= render :partial => "books", :locals => {:user => @user, :books => @user.user_books.reject{|b| b.id==nil}} %>
+	 	</div>
+
+	 </div>
+</div>
+
+
+
+<!-- <h2>My Library</h2>
+
+<#%= image_tag avatar_for(@user) %>
+
+<#%= render "user_books/form" %> 
 <br> 
 <table class = "table table-responsive table-condensed table-striped">
   <tr>
@@ -15,7 +34,8 @@
     <th></th>
   </tr>
 
-<%= render @user_books %>
+<#%= render @user_books %>
 </table>
 
-<%= paginate @user_books %>
+<#%= paginate @user_books %>
+ -->

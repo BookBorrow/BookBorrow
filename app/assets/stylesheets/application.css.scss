@@ -109,3 +109,21 @@ img .setISBN{
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;   
 }
+
+ul h3.profile-name{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.row.row-padded{
+	padding: 1em 0 1em 0;
+}
+
+.row.row-padded div{
+	
+}
+input.pr-15{
+	width: auto;
+	margin-right: 15px;
+}

@@ -1,0 +1,12 @@
+<div class="container col-md-8">
+		<% (0..books.length-1).step(5) do |i| %>
+			<div class="row row-padded">
+				<% books[i..(i+3 % books.length)].each do |book| %>
+					<div class="col-md-3 unpadded">
+							<%= link_to(image_tag(book.cover_url), user_book_path(book)) %>
+					</div>
+				<% end %>
+			</div>
+				<div class="clear-fix"></div>
+		<% end %>
+</table>
