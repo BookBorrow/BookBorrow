@@ -8,7 +8,7 @@
   <%= button_to 'Add To Library & Loan' %>
 
 <!-- book is in the library BUT on loan -->
-<% elsif current_user.on_loan_collection.any? {|user_book| user_book.book_id == book.id } %>
+<% elsif current_user.on_loan_collection.any? { |user_book| user_book.book_id == book.id } %>
   <h3><%= 'On Loan' %></h3>
   <%= button_to 'Send Reminder' %>
 
