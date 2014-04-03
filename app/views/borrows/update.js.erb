@@ -1,0 +1,3 @@
+$borrows_div = $("#borrows");
+$borrow_div = $("#borrow_<%= @borrow.id %>");
+$borrow_div.replaceWith('<%= j render @borrow %>');
