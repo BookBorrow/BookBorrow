@@ -23,8 +23,8 @@ function showValues() {
             $(".setISBN").bind('click', function() {
                 $("#bookISBN").val($(this).parent().data("isbn"));
                 //Wipe out all selected values and set this one to black.
-                $(this).parent().siblings().css('background-color', 'white');
-                $(this).parent().css('background-color', 'green');
+                $(".bookitem").css('background-color', 'white');
+                $(this).parent(".bookitem").css('background-color', 'lightgrey');
             });
         });
     } else {
