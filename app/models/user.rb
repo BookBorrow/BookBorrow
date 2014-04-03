@@ -11,6 +11,19 @@ class User < ActiveRecord::Base
     self.id == id
   end
 
+  def display_name
+    return name if name
+    email
+  end
+
+  def library_size
+    user_books.count
+  end
+
+  def number_of_loans
+    on_loan_collection.count
+  end
+
   def on_loan_collection
     user_books.select(&:on_loan?)
   end

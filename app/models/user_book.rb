@@ -7,6 +7,22 @@ class UserBook < ActiveRecord::Base
   	self.borrows.last && !self.borrows.last.returned?
   end
 
+  def author
+    book.author
+  end
+
+  def title
+    book.title
+  end
+
+  def description
+    book.description
+  end
+
+  def cover_url
+    book.cover_url
+  end
+
   def latest_borrow
     self.borrows.last
   end

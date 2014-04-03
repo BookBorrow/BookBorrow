@@ -1,8 +1,15 @@
-<h2>My Library</h2>
 
-<%= image_tag avatar_for(@user) %>
+	<%= render :partial => "profile", :locals => {:user => @user} %>
+	 <%= render :partial => "my_books", :locals => {:books => @user.user_books, :user => @user} %>
 
-<%= render "user_books/form" %> 
+
+
+
+<!-- <h2>My Library</h2>
+
+<#%= image_tag avatar_for(@user) %>
+
+<#%= render "user_books/form" %> 
 <br> 
 <table class = "table table-responsive table-condensed table-striped">
   <tr>
@@ -15,7 +22,8 @@
     <th></th>
   </tr>
 
-<%= render @user_books %>
+<#%= render @user_books %>
 </table>
 
-<%= paginate @user_books %>
+<#%= paginate @user_books %>
+ -->
