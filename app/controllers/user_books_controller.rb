@@ -29,16 +29,16 @@ class UserBooksController < ApplicationController
     else
       @user = User.find(params[:user_id])
       user_book = @user.user_books.build(user_book_params)
-      if user_book.id.nil?
-        redirect_to @user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
-      else
+      # if user_book.id.nil?
+        
+      # else
         if user_book.save
           redirect_to @user
         else
-          render 'users/show'
+          redirect_to @user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
         end
       end
-    end
+    # end
   end
 
   private

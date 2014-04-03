@@ -13,7 +13,7 @@ class Book < ActiveRecord::Base
   		record = search.first
   		book = Book.create(:title => record.title, 
                          :description => record.description, 
-                         :author=> record.authors_array[0], 
+                         :author=> record.authors_array[0]||record.authors||"unknown", 
                          :isbn => record.isbn_13, 
                          :cover_url => record.image_link,
                          :categories => record.categories,
