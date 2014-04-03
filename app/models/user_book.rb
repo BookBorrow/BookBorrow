@@ -41,12 +41,12 @@ class UserBook < ActiveRecord::Base
   end
 
   def from_isbn= isbn
+
     if book = Book.find_by(:isbn => isbn)
       self.book_id = book.id
     else
       book = Book.create_from_google(isbn)
-
-        self.book_id = book.id unless book.nil?
+      self.book_id = book.id unless book.nil?
     end
   end
 end

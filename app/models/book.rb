@@ -33,7 +33,7 @@ class Book < ActiveRecord::Base
 
 private
   def normalize_isbn
-    self.isbn = Book.strip_isbn(self.isbn)
+    self.isbn = Book.strip_isbn(self.isbn) unless self.isbn.nil?
   end
 
   def self.strip_isbn(isbn)
