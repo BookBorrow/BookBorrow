@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_books = @user.user_books.page(params[:page]).per(10)
-    @user_book = UserBook.new
+    @user_book = @user.user_books.build
     @borrow = Borrow.new
   end
   

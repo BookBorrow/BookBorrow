@@ -1,12 +1,15 @@
+<div class="row">
 	<ul class="list-group">
 		<li class="list-group-item">
-			<h3><%= user.display_name %></h3>
+			<h3 class="profile-name"><%= user.display_name %></h3>
 		</li>
-		<li class="list-group-item text-center" >
-			<%= image_tag avatar_for(user), :class => "profile-image" %>
+		<li class="list-group-item text-center">
+			<div class="container-fluid">
+			<%= image_tag avatar_for(user, 300), :class => "img-responsive profile-image" %>
 			<% if user === current_user %>
 				<strong class="caption"><small><%= link_to("Change Gravatar","http://www.gravatar.com") %></small></strong>
 			<% end %>
+			</div>
 	    </li>
 	    <li class="list-group-item">
 	    	<span><strong>Books in Library:</strong> <%= user.library_size %></strong></span>
@@ -14,4 +17,8 @@
 	    <li class="list-group-item">
 	    	<span><strong>Books on Loan:</strong> <%= user.number_of_loans %></strong></span>
 	    </li>
+	    <li class="list-group-item">
+	    	<%= render "user_books/form" %>
+	    </li>
     </ul>
+</div>

@@ -96,3 +96,14 @@ form.form-inline input.max-width-80{
 	margin-right: 12px;
 	float: left;
 }
+
+ul h3.profile-name{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+input.pr-15{
+	width: auto;
+	margin-right: 15px;
+}

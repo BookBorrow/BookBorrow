@@ -1,10 +1,6 @@
-<%= form_for([@user, @user_book]) do |f| %>
-  <p>
-  <label for="new_user_book"></label>
-
-  <input id="new_user_book" type="text" name="user_book[from_isbn]" placeholder="good ux?">
-  <input class="btn btn-primary" type="submit" value="Add by ISBN">
-
-  </p>
-
+<%= form_for([@user, @user_book], :html=>{:class=>"form", :role=>"form"}) do |f| %>
+	<div class="form-group">
+  	<p><label for="new_user_book" class="sr-only col-md-3">Add a Book to Your Library by ISBN:</label><input id="new_user_book" class="form-control" type="text" name="user_book[from_isbn]" placeholder="0123456789012"></p>
+  	<input class="btn btn-primary" type="submit" value="Add Book By ISBN">
+  	</div>
 <% end %>

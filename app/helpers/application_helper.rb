@@ -1,8 +1,8 @@
 module ApplicationHelper
 
-  def avatar_for(user)
+  def avatar_for(user, size = 100)
     default_url = "#{root_url}images/guest.png"
-    pixels = 100
+    pixels = size
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     default_url = "#{root_url}images/guest.png"
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{pixels}"
