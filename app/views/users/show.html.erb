@@ -1,5 +1,5 @@
 	
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
 
 		<div class="col-md-3 col-sm-4 col-lg-2">
@@ -8,13 +8,10 @@
 
 		<div class="col-md-8 col-sm-7 col-lg-9">
    		 	<%= render :partial => "borrows", :locals => {:borrows => @active_borrows } %>
-   		</div>
-
-	 </div>
-	 <div class="row">
-	 	<div class="col-md-12 col-md-offset-4">
+   		
 		 	<%= render :partial => "books", :locals => {:user => @user, :books => @user.user_books.reject{|b| b.id==nil}} %>
 	 	</div>
+
 	 </div>
 </div>
 
