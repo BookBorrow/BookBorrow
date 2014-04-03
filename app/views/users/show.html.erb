@@ -1,7 +1,16 @@
-
-	<%= render :partial => "profile", :locals => {:user => @user} %>
-	 <%= render :partial => "my_books", :locals => {:books => @user.user_books, :user => @user} %>
-
+	<div class="row">
+		<div class="col-md-4">
+			<%= render :partial => "profile", :locals => {:user => @user} %>
+		</div>
+		<div class="col-md-8">
+	 		<%= render :partial => "borrows", :locals => {:books => @user.user_books, :user => @user} %>
+	 	</div>
+	 </div>
+	 <div class="row">
+	 	<div class="col-md-8">
+		 	<%= render :partial => "books", :locals => {:user => @user, :books => @user.user_books} %>
+	 	</div>
+	 </div>
 
 
 
