@@ -16,17 +16,20 @@ class UserBooksController < ApplicationController
 
   # POST /users/:user_id/user_books
   def create
-    
     if current_user.nil?
       session[:user_book] = params
       redirect_to new_user_registration_path
     else
       @user = User.find(params[:user_id])
       user_book = @user.user_books.build(user_book_params)
-      if user_book.save
-        redirect_to @user
+      if user_book.id.nil?
+        redirect_to @user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
       else
-        render 'users/show'
+        if user_book.save
+          redirect_to @user
+        else
+          render 'users/show'
+        end
       end
     end
   end
