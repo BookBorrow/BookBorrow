@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :books 
 
-  root 'books#index'
+  root 'welcome#index'
   devise_for :users 
   devise_scope :user do
     # root to: "devise/sessions#new"
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/user_books/:user_book_id/borrows/:id' => 'borrows#show', :as => 'user_book_borrow'
 
   get '/user_books/:user_book_id/borrows/:id/remind' => 'borrows#remind', :as => 'remind_user_book_borrow'
+
+  get '/welcome' => 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

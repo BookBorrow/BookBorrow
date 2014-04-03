@@ -1,0 +1,33 @@
+<div class="container">
+<div class="row">
+  <h2>Welcome To Bookborrow</h2>
+  <h3>Share Your Books and Get Them Back</h3>
+    <%= render "books/form" %>
+</div>
+</div>
+
+<br>
+
+
+
+
+<h3>Programming Books</h3>
+<%= button_to 'Add All To Library', {class: "btn btn-primary" } %>
+<!-- Quickly reduce the work of building a library --> 
+<% @programming_books[1..7].each do |book| %>
+  <%= link_to image_tag(book.cover_url), book %>
+<% end %>
+
+<h3>New York Times Bestsellers</h3>
+<%= button_to 'Add All To Library', {class: "btn btn-primary" } %>
+<!-- Quickly reduce the work of building a library --> 
+<% @nyt_bestsellers[1..7].each do |book| %>
+  <%= link_to image_tag(book.cover_url), book %>
+<% end %>
+
+<h3>Programming Books</h3>
+<%= button_to 'Add All To Library', {class: "btn btn-primary" } %>
+<!-- Quickly reduce the work of building a library --> 
+<% @programming_books[1..7].each do |book| %>
+  <%= link_to image_tag(book.cover_url), book %>
+<% end %>
