@@ -2,16 +2,15 @@
 <table id="bookresultspartial" class="table-responsive table-bordered">
   <% counter = 0 %>
   <tr>
-  <% @books.each do |book|%>
-  <td class="bookitem", data-ISBN="<%=book.isbn%>">
-    <%= image_tag(book.cover_url, :class => "setISBN")%>
-  </td>
-  <% counter+=1 %>
-  <% if counter %5 ==0 %>
-    </tr>
-    <tr>
-  <% end %>
-  <% end %>
-</tr>
+    <% @books.each do |book|%>
+    <td class="bookitem", data-ISBN="<%=book.isbn%>">
+      <%= image_tag(book.cover_url, :class => "setISBN")%>
+    </td>
+    <% counter+=1 %>
+    <% if counter %5 ==0 %>
+  </tr>
+  <tr>
+    <% end %>
+    <% end %>
+  </tr>
 </table>
-

@@ -1,9 +1,9 @@
 class UserBooksController < ApplicationController
   before_action :authenticate_on_destroy, :only => "destroy"
+  before_action :set_user_book, :only => ["destroy", "show"]
 
   # DELETE users/:user_id/user_books/:id
   def destroy
-    @user_book = UserBook.find(params[:id])
     @user = @user_book.user
 
     if @user_book.destroy
@@ -13,6 +13,13 @@ class UserBooksController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def index
+    @user = User.find(params[:user_id])
+    @user_books = @user.user_books
+  end
 
   # POST /users/:user_id/user_books
   def create
@@ -22,10 +29,14 @@ class UserBooksController < ApplicationController
     else
       @user = User.find(params[:user_id])
       user_book = @user.user_books.build(user_book_params)
-      if user_book.save
-        redirect_to @user
+      if user_book.id.nil?
+        redirect_to @user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
       else
-        render 'users/show'
+        if user_book.save
+          redirect_to @user
+        else
+          render 'users/show'
+        end
       end
     end
   end
@@ -41,6 +52,9 @@ class UserBooksController < ApplicationController
   #     redirect_to new_user_session_path, :alert => "Goodbye!"
   #   end
   # end
+  def set_user_book
+    @user_book = UserBook.find(params[:id])
+  end
 
   def authenticate_on_destroy
     unless UserBook.find(params[:id]).user == current_user

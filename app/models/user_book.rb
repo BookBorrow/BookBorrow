@@ -4,7 +4,7 @@ class UserBook < ActiveRecord::Base
   has_many :borrows
 
   def borrowed?
-  	self.borrows.last && !self.borrows.last.returned?
+    self.borrows.last && !self.borrows.last.returned?
   end
 
 
@@ -41,12 +41,12 @@ class UserBook < ActiveRecord::Base
   end
 
   def from_isbn= isbn
+
     if book = Book.find_by(:isbn => isbn)
       self.book_id = book.id
     else
       book = Book.create_from_google(isbn)
-      binding.pry
-      self.book_id = book.id
+      self.book_id = book.id unless book.nil?
     end
   end
 end

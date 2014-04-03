@@ -10,7 +10,7 @@ function showValues() {
     var bookquery = $("#bookquery");
     if ($("#wbooksearch").val().length >= 3) {
 
-        bookquery.show(50);
+        bookquery.show(500);
         $.ajax({
             url: "welcome/query",
             data: {
@@ -28,6 +28,6 @@ function showValues() {
             });
         });
     } else {
-        bookquery.hide(50);
+        bookquery.hide(500);
     }
 };
