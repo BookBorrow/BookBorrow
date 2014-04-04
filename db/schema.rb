@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140404123613) do
-=======
 ActiveRecord::Schema.define(version: 20140403152816) do
->>>>>>> 6440d483d7478f375279ca4a8dabe3f9c9225ec2
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +22,13 @@ ActiveRecord::Schema.define(version: 20140403152816) do
     t.string   "isbn"
     t.string   "author"
     t.string   "cover_url"
+    t.string   "categories"
+    t.integer  "ratings_count"
+    t.integer  "average_rating"
+    t.integer  "page_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
   create_table "borrows", force: true do |t|
     t.integer  "user_book_id"
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140403152816) do
     t.string   "borrower_email"
     t.string   "borrower_name"
   end
-
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
