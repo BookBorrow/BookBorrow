@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402191841) do
+ActiveRecord::Schema.define(version: 20140404123613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,15 +30,8 @@ ActiveRecord::Schema.define(version: 20140402191841) do
     t.datetime "updated_at"
   end
 
-  create_table "borrows", force: true do |t|
-    t.integer  "user_book_id"
-    t.date     "borrow_date"
-    t.integer  "duration_in_days"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "returned"
-    t.string   "borrower_email"
-  end
+# Could not dump table "borrows" because of following StandardError
+#   Unknown type 'name' for column 'string'
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"

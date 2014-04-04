@@ -6,17 +6,17 @@
       
       <div class="form-group">
         <%= form_tag books_path, method: :get, class: "form-inline"  do %>
-        <%= label_tag("Book Name") %>
-         <%= text_field_tag :query, params[:name], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'wbooksearch'%>
+        <%= label_tag(:book_title, "What book do you want to loan out?") %>
+         <%= text_field_tag :book_title, params[:book_title], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'wbooksearch'%>
         <br>
-        <%= label_tag("Borrower's Name") %>
-         <%= text_field_tag :query, params[:borrowername], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
+        <%= label_tag(:borrower_name, "Who are you loaning it to?") %>
+         <%= text_field_tag :borrower_name, params[:borrower_name], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
         <br>
-         <%= label_tag("Borrower's Email") %>
-         <%= text_field_tag :query, params[:email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
+         <%= label_tag(:borrower_email, "Where can we send overdue notices?", :"data-toggle"=> "tooltip", :"data-placement"=>"top", :title=>"Borrower emails are totally optional, and we'll only send emails when and if you ask us to.") %>
+         <%= text_field_tag :borrower_email, params[:borrower_email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
         <br>
-        <%= label_tag("Remind them in:") %>
-         <%= date_field_tag params[:email] %>
+        <%= label_tag("When do you want your book back?") %>
+         <%= date_field_tag :borrow_due_date %>
         <br>
         <br>
         <%= hidden_field_tag(:bookISBN)%>
@@ -29,24 +29,3 @@
     <div id="bookquery" class="col-md-8"></div>
   </div>
 </div>
-
-      
-      <!--
-      <h3>Programming Books</h3>
-      <% button_to 'Add All To Library', {class: "btn btn-primary" } %>
-      <!-- Quickly reduce the work of building a library -->
-      <% @programming_books[1..7].each do |book| %>
-      <% link_to image_tag(book.cover_url), book %>
-      <% end %>
-      <!-- <h3>New York Times Bestsellers</h3> -->
-      <% button_to 'Add All To Library', {class: "btn btn-primary" } %>
-      <!-- Quickly reduce the work of building a library  -->
-      <% @nyt_bestsellers[1..7].each do |book| %>
-      <% link_to image_tag(book.cover_url), book %>
-      <% end %>
-      <!-- <h3>Programming Books</h3> -->
-      <% button_to 'Add All To Library', {class: "btn btn-primary" } %>
-      <!-- Quickly reduce the work of building a library -->
-      <% @programming_books[1..7].each do |book| %>
-      <% link_to image_tag(book.cover_url), book %>
-      <% end %>
