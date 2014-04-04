@@ -14,10 +14,9 @@
 				<% books[i..(limit)].each do |book| %>
 					<div class="col-md-1 col-xs-4 col-sm-12 unpadded">
 						<% if current_user == @user %>
-						
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), new_user_book_borrow_path(book)) %>
 						<% else %>
-							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), new_user_book_borrow_path(book)) %>
+							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), user_user_book_path(book.user, book)) %>
 							<% end %>
 					</div>
 				<% end %>
@@ -25,4 +24,3 @@
 				<div class="clear-fix"></div>
 		<% end %>
 </table>
-

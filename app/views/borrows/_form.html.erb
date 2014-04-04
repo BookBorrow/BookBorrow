@@ -1,9 +1,7 @@
-<div class="border-form-div">
-<%= form_for [@user_book, @borrow] do |f| %>
+<%= form_for [@user_book, @borrow], :remote => true do |f| %>
   <input type="hidden" name="borrow[borrow_date]" value="<%= Date.today %>">
 
   <div class="form-group">
-
     <%= label_tag "borrow_due_date" %>
     <%= date_field_tag "borrow[due_date]", nil, :class => "form-control"%>
   </div>
@@ -18,7 +16,5 @@
     <%= f.text_field :borrower_email, :class => "form-control max-width-80" %>
   </div>
 
-  <%= f.submit "Loan", :class => "btn btn-primary" %>
-  
+  <%= f.submit "Loan", :type => "hidden", :class => "btn btn-primary" %>
 <% end %>
-</div>
