@@ -1,3 +1,6 @@
+
+<%= render :partial => "add_button", :locals => {:book => @book } %>
+
 <h3><%= @book.title %></h3>
 <p><%= image_tag(@book.cover_url, class: "img-rounded") %>
 <p><%= @book.isbn %>
@@ -8,21 +11,3 @@
 <p><%= @book.ratings_count %> 
 <p><%= @book.page_count %> 
 
-    <% if !user_signed_in? %>
-      <%= button_to 'Add To Library' %>
-      <!-- Asks user to sign in/sign up and friendly forwards the book into their library --> 
-
-    <% elsif !current_user.user_books.where(:book_id=> @book.id) %> 
-      <%= button_to 'Add To Library' %>
-      <!-- Adds the book into their library -->
-
-    # <% elsif not_borrowed %> 
-        # <% button_to 'Loan This Book' %>
-        <!-- Shows the Loan Form -->
-
-    # <% elsif borrowed %> 
-        # <% button_to 'Send Reminder' %>
-        <!-- <p> Due Date: </p> -->
-        <!-- Shows the Reminder Email Form -->
-        
-     <% end %> 

@@ -1,5 +1,5 @@
 class BorrowMailer < ActionMailer::Base
-  default from: "michael.prouty@flatironschool.com"
+  default from: "alex.patriquin@flatironschool.com"
 
   def reminder_email(borrow)
     @borrow = borrow

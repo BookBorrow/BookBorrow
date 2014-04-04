@@ -10,7 +10,7 @@ function showValues() {
     var bookquery = $("#bookquery");
     if ($("#wbooksearch").val().length >= 3) {
 
-        bookquery.show(50);
+        bookquery.show(500);
         $.ajax({
             url: "welcome/query",
             data: {
@@ -18,7 +18,7 @@ function showValues() {
             }
         }).done(function(html) {
             bookquery.empty();
-            $("#bookISBN").val("");
+
             bookquery.prepend(html);
             $(".setISBN").bind('click', function() {
                 $("#bookISBN").val($(this).parent().data("isbn"));
@@ -28,6 +28,7 @@ function showValues() {
             });
         });
     } else {
-        bookquery.hide(50);
+        $("#bookISBN").val("");
+        bookquery.hide(500);
     }
 };

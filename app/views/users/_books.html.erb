@@ -1,11 +1,20 @@
+
 <div class="container col-md-12 border-top">
 <h4>Available Library</h4>
 <hr>
 		<% (0..books.length-1).step(11) do |i| %>
 			<div class="row row-padded">
-				<% books[i..(i+9 % books.length)].each do |book| %>
-					<div class="col-md-1 col-xs-4 col-sm-21 unpadded">
+				<!-- Ensure that if the last row has less than 9 books, break-->
+				<% unless i+9 > books.length
+				limit = i+9
+			else
+				limit = books.length
+			end
+				%>
+				<% books[i..(limit)].each do |book| %>
+					<div class="col-md-1 col-xs-4 col-sm-12 unpadded">
 						<% if current_user == @user %>
+						
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), new_user_book_borrow_path(book)) %>
 						<% else %>
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), new_user_book_borrow_path(book)) %>
@@ -16,3 +25,4 @@
 				<div class="clear-fix"></div>
 		<% end %>
 </table>
+

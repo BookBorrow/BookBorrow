@@ -13,13 +13,20 @@ Rails.application.routes.draw do
   delete 'user_books/:id' => 'user_books#destroy', as: :user_book
 
   # user_books
-  post 'users/:user_id/user_books/' => 'user_books#create', :as => "user_user_books"
+  # ==========
 
-  # borrows
+  post 'users/:user_id/books/' => 'user_books#create', :as => "user_user_books"
+  get '/users/:user_id/books' => 'user_books#index'
+  post '/user_books' => 'user_books#create', :as => "create_user_book"
+  
+  get 'users/:user_id/books/:id' => 'user_books#show', :as => "user_user_book"
+
+  # borrows 
   # =======
+  post '/borrows' => 'borrows#create', :as => "create_borrow"
 
   # scoped to user_book
-  post 'user_books/:user_book_id/borrows' => 'borrows#create', :as => "user_book_borrows"
+  post '/user_books/:user_book_id/borrows' => 'borrows#create', :as => "user_book_borrows"
   get '/user_books/:user_book_id/borrows/new' => 'borrows#new', :as => 'new_user_book_borrow'
 
   # scoped to user
