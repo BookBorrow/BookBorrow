@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
       binding.pry
       @user_book = current_user.user_books.create(session[:forwarding]["user_book"])
       if session[:forwarding]["controller"] = "borrows"
-        @borrow = user_book.borrows.create(:borrower_email => session[:forwarding]["user_book"]"borrower_name",
-                                           :borrower_name  => session[:forwarding]["user_book"]"borrower_email",
-                                           :due_date       => session[:forwarding]["user_book"]"due_date",
+        @borrow = user_book.borrows.create(:borrower_email => session[:forwarding]["user_book"]["borrower_name"],
+                                           :borrower_name  => session[:forwarding]["user_book"]["borrower_email"],
+                                           :due_date       => session[:forwarding]["user_book"]["due_date"],
                                            :returned       => false)
         flash[:notice] = "Added to your library and put on loan"
       else
