@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2>The Bookborrow Database</h2>
+    <h2>The BookBorrow Database</h2>
     <%= render "form" %>
   </div>
 </div>
@@ -10,21 +10,22 @@
   <li class="list-group-item container">
     <div class="row center-block">
       <div class="col-sm-12 col-md-2">
-        <p><%= link_to image_tag(book.cover_url), book %></p>
+        <p><%= image_tag(book.cover_url) %></p>
       </div>
       <div class="col-md-9 col-sm-10">
         <div class="row center-block">
-          <h3><%= link_to book.title, book %>
+
+          <h3><%= truncate(book.title, length:100, separator: " ", omission: "...") %>
           <small><%= link_to book.author, :controller => "books", :query => book.author %></small>
           </h3>
-          
           <%= render :partial => "add_button", :locals => {:book => book } %>
-
-          <span class="text-muted">ISBN <%= book.isbn %> </span>
+          <br>
           <p class="text-muted">
-          <strong>Synopsis</strong><br />
+
+          <% if book.description %>  
+          <strong>Description</strong><br />
           <td><%= truncate(book.description, length:250, separator: " ", omission: "...") %></td>
-          
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <%= form_tag books_path, method: :get, class: "form-inline" do %>
 <div class="form-group">
 
-  <%= text_field_tag :query, params[:query], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'booksearch', class: "ui-autocomplete-input" %>
+  <%= text_field_tag :query, params[:query], placeholder: "", id: 'booksearch', class: "ui-autocomplete-input form-control max-width-80" %>
 
   <%= submit_tag "Search", class: "btn btn-primary"  %>
 </div>

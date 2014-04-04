@@ -39,6 +39,10 @@ class Borrow < ActiveRecord::Base
     where(:returned => false)
   end
 
+  def self.inactive
+    where(:returned => true)
+  end
+
   def book
     self.user_book.book
   end
