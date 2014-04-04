@@ -1,6 +1,11 @@
 class Borrow < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   belongs_to :user_book
+  before_save :set_borrow_date
+
+  def set_borrow_date
+    self.borrow_date ||= Date.today
+  end
 
   def due_date
     self.borrow_date + self.duration_in_days

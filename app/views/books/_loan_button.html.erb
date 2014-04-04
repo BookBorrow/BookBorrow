@@ -1,6 +1,5 @@
 <% if current_user.nil? %>
-  <%= button_to 'Loan', create_borrow_path(:user_book      => { :from_isbn => book.isbn }, 
-                                           :borrow_request => { :flag      => false     }), method: :post %>
+  <%= button_to 'Loan', create_borrow_path(:user_book => { :from_isbn => book.isbn }, :borrow_request => { :flag => true }), method: :post %>
 
 <!-- book is NOT in the library -->
 <% elsif [book.id] != current_user.user_books.where(:book_id => book.id).pluck(:book_id) %>

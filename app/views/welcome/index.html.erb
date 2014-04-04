@@ -1,34 +1,11 @@
+
+
 <div class="container">
   <div class="row">
     <h2>Share your books <em>and</em> get them back.</h2>
     <h4>Keep track of who's borrowing your books with BookBorrow.</h4>
     <div class="border-form-div col-sm-12">
       
-      <div class="form-group">
-        <%= form_tag books_path, method: :get, class: "form-inline"  do %>
-        <%= label_tag("Book Name") %>
-         <%= text_field_tag :query, params[:name], class: "form-control max-width-80", placeholder: "Search by title, etc", id: 'wbooksearch'%>
-        <br>
-        <%= label_tag("Borrower's Name") %>
-         <%= text_field_tag :query, params[:borrower_name], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
-        <br>
-         <%= label_tag("Borrower's Email") %>
-         <%= text_field_tag :query, params[:borrower_email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
-        <br>
-         <%= label_tag("Due date") %>
-         <%= date_field_tag :query, params[:due_date], class: "form-control max-width-80", placeholder: "14" %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <%= hidden_field_tag(:bookISBN)%>
-        <%= submit_tag "Submit", class: "btn btn-primary"  %>
-        <% end %>
-        <br>
-        <p><i>*We promise to only email them once.</i></p>
-      </div>
-    </div >
-    <!-- Partial for book query -->
-    <div id="bookquery" class="col-md-8"></div>
+      <%= render 'borrow' %>
   </div>
 </div>

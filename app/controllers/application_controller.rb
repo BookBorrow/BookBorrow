@@ -6,12 +6,19 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if session[:forwarding].present?
+      binding.pry
       @user = current_user
-      user_book = @user.user_books.create(session[:forwarding]["user_book"])
-      flash[:notice] = "Added to your library"
-      if session[:forwarding]["borrow_request"]["flag"] == true
+      if session[:forwarding]["user_book"]
+        user_book = @user.user_books.create(session[:forwarding]["user_book"])
+        flash[:notice] = "Added to your library"
+      else
+        #create the book
+        #create the user_book   
         #take the user_book and mark it as borrowed
         #how to handle the presence or absence of borrower_name and/or borrower_email
+        # :borrower_name, :borrower_email, :due_date
+        @borrow = user_book.borrows.create()
+        @borrow.returned = false
         flash[:notice] = "Added to your library and put on loan"
       end
       session[:forwarding] = nil

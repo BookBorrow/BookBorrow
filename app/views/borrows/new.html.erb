@@ -2,16 +2,6 @@
 <%= form_for [@user_book, @borrow] do |f| %>
 
   <div class="form-group">
-    <%= f.label "Today's date" %><br>
-    <%= f.date_select :borrow_date %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label "Due date (days from today)" %>
-    <%= f.number_field :duration_in_days %>
-  </div>
-
-  <div class="form-group">
     <%= f.label "Borrower's name" %>
     <%= f.text_field :borrower_name %>
   </div>
@@ -19,6 +9,11 @@
   <div class="form-group">
     <%= f.label "Borrower's email" %>
     <%= f.text_field :borrower_email %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Due date (days from today)" %>
+    <%= f.number_field :duration_in_days %>
   </div>
 
   <%= f.submit %>
