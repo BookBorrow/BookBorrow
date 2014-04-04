@@ -3,7 +3,7 @@ class BorrowsController < ApplicationController
   before_action :set_user,        :only => [:destroy]
 
   def index
-    @borrows = User.find(params[:id]).borrows
+    @borrows = User.find(params[:id]).active_borrows
   end
   
   def create
