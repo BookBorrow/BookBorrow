@@ -1,8 +1,8 @@
-
+<h2>Please select the book that you are lending</h2>
 <table id="bookresultspartial" class="table-responsive table-bordered">
   <% counter = 0 %>
   <tr>
-    <% @books.each do |book|%>
+    <% @books[0..9].each do |book|%>
     <td class="bookitem", data-ISBN="<%=book.isbn%>">
       <%= image_tag(book.cover_url, :class => "setISBN")%>
     </td>
@@ -14,3 +14,6 @@
     <% end %>
   </tr>
 </table>
+<% if @books.length>10 %>
+<h4>Not enough data damnit. </h4>
+<% end %>
