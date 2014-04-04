@@ -9,6 +9,19 @@ class BooksController < ApplicationController
     end
   end
 
+  def new
+  end
+
+  def create
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to "/books?#{{:query => @book.title}.to_query}"
+    else
+      flash[:notice] = @book.errors.full_messages.join(" ")
+      render "new"
+    end
+  end
+
   def show
     @book = Book.find(params[:id])
   end
@@ -19,6 +32,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :description, :isbn, :author, :cover_url, :categories, :ratings_count, :average_rating, :page_count)
+    params.require(:book).permit(:title_from_google, :title, :description, :isbn, :author, :cover_url, :categories, :ratings_count, :average_rating, :page_count)
   end
 end
