@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  get "/books/new_from_google" => 'books#new_from_google', :as => :new_from_google
-  resources :books
+  
+  
+  get "/books" => "books#index"
+  get "/books/new" => 'books#new', :as => :new_book
+  get "/books/:id" => "books#show", :as => :book
+  post "/books" => "books#create", :as => :create_book
 
 
   root 'welcome#index'

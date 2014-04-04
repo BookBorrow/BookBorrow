@@ -28,7 +28,7 @@ class Book < ActiveRecord::Base
   end
 
   def title_from_google=(title)
-    search = GoogleBooks.search("title: #{query}", {:count => 1, :api_key => "AIzaSyCvOuvO_hQS_ZULj8Q4vIBttWefh6kv8zY"})
+    search = GoogleBooks.search("title: #{title}", {:count => 1, :api_key => "AIzaSyCvOuvO_hQS_ZULj8Q4vIBttWefh6kv8zY"})
     if search.first
       record = search.first
       self.title = record.title

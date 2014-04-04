@@ -1,0 +1,8 @@
+<div class="container text-center col-xs-12">
+	<%= form_tag books_path, :method => :post, :class=> "form" do %>
+		<div class="form-group">
+			<%= text_field_tag "book[title_from_google]", nil, :placeholder => "Whats the title of your book?", :class => "form-control", :style => "float: left; max-width: 90%;" %>
+			<input type="submit" class="btn btn-primary" value="Find">
+		</div>
+	<% end %>
+</div> 
