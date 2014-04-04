@@ -17,6 +17,7 @@ class BorrowsController < ApplicationController
         redirect_to new_user_registration_path
       end
     else
+      binding.pry
       @user_book = UserBook.find(params[:user_book_id])
       @borrow = @user_book.borrows.build(borrow_params)
       @borrow.returned = false

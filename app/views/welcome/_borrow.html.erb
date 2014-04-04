@@ -9,7 +9,7 @@
          <%= text_field_tag :borrower_name, params[:borrower_name], class: "form-control max-width-80", placeholder: "Borrower's Name"%>
         <br>
          <%= label_tag("Borrower's Email") %>
-         <%= text_field_tag :borrower_name, params[:borrower_email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
+         <%= text_field_tag :borrower_email params[:borrower_email], class: "form-control max-width-80", placeholder: "Borrower's Email"%>
         <br>
          <%= label_tag("Due date") %>
          <%= date_field_tag :due_date, params[:due_date], class: "form-control max-width-80", placeholder: "14" %>
