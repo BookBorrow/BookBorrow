@@ -1,6 +1,5 @@
 $borrows_div = $("#borrows");
 $borrow_div = $("#borrow_<%= @borrow.id %>");
-$borrow_div.replaceWith('<%= j render partial: "inactive_borrow", 
-  :locals =>{ :borrow => @borrow} %>');
+$borrow_div.replaceWith('<%= j render @borrow %>');
 
 // $("table:nth-of-type(2) tbody tr:nth-child(1)").after($("#borrow_<%= @borrow.id %>"));
