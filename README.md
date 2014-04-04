@@ -10,7 +10,7 @@ Check out our snappy homepage, which allows you to sign up, add a book to your l
 
 ##How did we build BookBorrow?
 
-*Google Books API
-*Book - Borrower model
-*Email reminders
-*Friendly forwarding
+* Google Books API
+* Book - Borrower model
+* Email reminders
+* Friendly forwarding
