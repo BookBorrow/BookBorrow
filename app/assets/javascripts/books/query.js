@@ -18,10 +18,10 @@ function showValues() {
             }
         }).done(function(html) {
             bookquery.empty();
-
             bookquery.prepend(html);
             $(".setISBN").bind('click', function() {
                 $("#bookISBN").val($(this).parent().data("isbn"));
+                $("#imgISBN").val($(this).first().attr("src"));
                 //Wipe out all selected values and set this one to black.
                 $(".bookitem").css('background-color', 'white');
                 $(this).parent(".bookitem").css('background-color', 'lightgrey');
