@@ -18,7 +18,7 @@ function showValues() {
             }
         }).done(function(html) {
             bookquery.empty();
-            $("#bookISBN").val("");
+
             bookquery.prepend(html);
             $(".setISBN").bind('click', function() {
                 $("#bookISBN").val($(this).parent().data("isbn"));
@@ -28,6 +28,7 @@ function showValues() {
             });
         });
     } else {
+        $("#bookISBN").val("");
         bookquery.hide(500);
     }
 };
