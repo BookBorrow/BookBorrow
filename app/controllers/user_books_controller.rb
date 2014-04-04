@@ -5,7 +5,6 @@ class UserBooksController < ApplicationController
   # DELETE users/:user_id/user_books/:id
   def destroy
     @user = @user_book.user
-
     if @user_book.destroy
       redirect_to (user_path(@user))
     else
@@ -29,16 +28,12 @@ class UserBooksController < ApplicationController
     else
       @user = User.find(params[:user_id])
       user_book = @user.user_books.build(user_book_params)
-      # if user_book.id.nil?
-        
-      # else
         if user_book.save
           redirect_to @user
         else
           redirect_to @user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
         end
       end
-    # end
   end
 
   private
@@ -46,12 +41,6 @@ class UserBooksController < ApplicationController
     params.require(:user_book).permit(:from_isbn)
   end
 
-  # def authenticate_on_create
-  #   unless User.find(params[:user_id]) == current_user
-  #     sign_out current_user
-  #     redirect_to new_user_session_path, :alert => "Goodbye!"
-  #   end
-  # end
   def set_user_book
     @user_book = UserBook.find(params[:id])
   end

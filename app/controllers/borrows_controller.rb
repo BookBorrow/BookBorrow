@@ -9,8 +9,8 @@ class BorrowsController < ApplicationController
   def create
     if current_user.nil?
       session[:forwarding] = params
-      if params["bookISBN"] == ""
-        #search page to get bookISBN
+      if params["from_isbn"] == ""
+        #search page to get from_isbn
         #then redirect_to new_user_registration_path
       else
         redirect_to new_user_registration_path
@@ -59,7 +59,7 @@ class BorrowsController < ApplicationController
   private
 
   def borrow_params
-    params.require(:borrow).permit(:borrower_name, :borrower_email, :borrow_date, :duration_in_days, :returned, :due_date)
+    params.require(:borrow).permit(:borrower_name, :borrower_email, :borrow_date, :duration_in_days, :returned, :due_date, :from_isbn)
   end
 
   def set_borrow
