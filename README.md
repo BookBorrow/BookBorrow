@@ -1,40 +1,16 @@
-# Bookborrow
+#Welcome to the BookBorrow
 
-## Description
+Find us online at http://bookborrower.herokuapp.com/.
 
-Add a short description of your app.
+BookBorrow is a simple Rails app that enables you to keep track of the books you loan out to friends. Set a return date and send them an email reminder when a book is overdue.
 
-## Screenshots
+BookBorrow features multifaceted author, title and ISBN search, with data supplied by the Google Books API.
 
-Add some spiffy screenshots of your app here.
+Check out our snappy homepage, which allows you to sign up, add a book to your library and loan it to a friend -- all in one step.
 
-## Background
+##How did we build BookBorrow?
 
-Why did you want to make this app? What was your development process
-like?
-
-## Features
-
-Bullet point some of the key features of your app here.
-
-## Usage
-
-How do users use your app?
-
-## Development/Contribution
-
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
-
-## Future
-
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
-
-## Author
-
-Link to your blog, twitter, etc!
-
-## License
-
-My Spiffy App is MIT Licensed. See LICENSE for details.
+*Google Books API
+*Book - Borrower model
+*Email reminders
+*Friendly forwarding
