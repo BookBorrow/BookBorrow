@@ -3,9 +3,8 @@
     <h2>Share your books <em>and</em> get them back.</h2>
     <h4>Keep track of who's borrowing your books with BookBorrow.</h4>
     <div class="border-form-div col-sm-6 col-sm-offset-6">
-
          
-          <%= form_tag create_borrow_path, method: :get, class: "form-inline"  do %>
+          <%= form_tag create_borrow_path, method: :post, class: "form-inline"  do %>
 
            <div class="form-group">
           <%= label_tag(:book_title, "What book do you want to loan out?") %>
