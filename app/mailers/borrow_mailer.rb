@@ -5,7 +5,7 @@ class BorrowMailer < ActionMailer::Base
     @borrow = borrow
     @lender = borrow.user_book.user
     @book = borrow.user_book.book
-
+    puts "Mailed an e-mail"
     message = mail(to: @borrow.borrower_email, subject: "Overdue Book: #{@book.title}")
   end
 end
