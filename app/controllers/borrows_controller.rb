@@ -10,12 +10,14 @@ class BorrowsController < ApplicationController
     if current_user.nil?
       session[:forwarding] = params
       if params["from_isbn"] == ""
+        
         #search page to get from_isbn
         #then redirect_to new_user_registration_path
       else
         redirect_to new_user_registration_path
       end
     else
+      binding.pry
       @user_book = UserBook.find(params[:user_book_id])
       @borrow = @user_book.borrows.build(borrow_params)
       @borrow.returned = false

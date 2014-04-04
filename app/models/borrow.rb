@@ -2,7 +2,7 @@ class Borrow < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   belongs_to :user_book
   before_save :set_borrow_date
-  validates_presence_of :borrower_name, :duration_in_days, :borrow_date
+  validates_presence_of :borrower_name, :borrower_email, :duration_in_days, :borrow_date
 
   def set_borrow_date
     self.borrow_date ||= Date.today

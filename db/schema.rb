@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 20140403152816) do
     t.string   "isbn"
     t.string   "author"
     t.string   "cover_url"
+    t.string   "categories"
+    t.integer  "ratings_count"
+    t.integer  "average_rating"
+    t.integer  "page_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

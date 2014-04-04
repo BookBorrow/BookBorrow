@@ -1,10 +1,42 @@
-<div class="container">
+<div class="container content-center">
   <div class="row">
     <h2>Share your books <em>and</em> get them back.</h2>
     <h4>Keep track of who's borrowing your books with BookBorrow.</h4>
-    <div class="border-form-div col-sm-12">
+    <div class="border-form-div col-sm-6 col-sm-offset-6">
+
+         
+          <%= form_tag create_borrow_path, method: :get, class: "form-inline"  do %>
+
+           <div class="form-group">
+          <%= label_tag(:book_title, "What book do you want to loan out?") %>
+          <%= text_field_tag :book_title, nil, class: "form-control max-width-80", placeholder: "Search for a book title", id: 'wbooksearch'%>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:borrower_name, "Who are you loaning it to?") %>
+          <%= text_field_tag :borrower_name, nil, class: "form-control max-width-80", placeholder: "Borrower's name"%>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:borrower_email, "Where can we send overdue notices?", :"data-toggle"=> "tooltip", :"data-placement"=>"top", :title=>"Borrower emails are totally optional, and we'll only send emails when and if you ask us to.") %>
+          <%= text_field_tag :borrower_email, nil, class: "form-control max-width-80", placeholder: "Borrower's email (optional)"%>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:due_date, "When do you want your book back?") %>
+          <%= date_field_tag :due_date, nil, class: "form-control max-width-80" %>
+        </div>
+        <br><br>
+        <div class="form-group">
+        <%= hidden_field_tag("user_book[from_isbn]", nil, :id => :bookISBN)%>
+        <%= submit_tag "Submit", class: "btn btn-primary"  %>
+        </div>
+         <% end %>
+
+    </div >
+    <!-- Partial for book query -->
+    <div id="bookquery" class="col-md-8">
       
-      <%= render 'borrow' %>
+    </div>
+  </div>
+</div>
 
   </div>
 </div>
