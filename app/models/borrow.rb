@@ -2,6 +2,7 @@ class Borrow < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   belongs_to :user_book
   before_save :set_borrow_date
+  validates_presence_of :borrower_name, :duration_in_days, :borrow_date
 
   def set_borrow_date
     self.borrow_date ||= Date.today
@@ -21,7 +22,7 @@ class Borrow < ActiveRecord::Base
   end
 
   def due_date= due_date
-    self.duration_in_days = due_date - Date.today 
+    self.duration_in_days = DateTime.parse(due_date) - Date.today 
   end
 
   def overdue?

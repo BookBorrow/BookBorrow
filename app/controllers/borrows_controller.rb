@@ -7,6 +7,7 @@ class BorrowsController < ApplicationController
   end
   
   def create
+
     if current_user.nil?
       session[:forwarding] = params
       if params["from_isbn"] == ""
