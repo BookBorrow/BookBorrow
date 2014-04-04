@@ -3,7 +3,6 @@
     <h2>Share your books <em>and</em> get them back.</h2>
     <h4>Keep track of who's borrowing your books with BookBorrow.</h4>
     <div class="border-form-div col-sm-6 col-sm-offset-6">
-         
           <%= form_tag create_borrow_path, method: :post, class: "form-inline"  do %>
 
            <div class="form-group">
@@ -27,6 +26,7 @@
         <%= hidden_field_tag("user_book[from_isbn]", nil, :id => :bookISBN)%>
         <%= submit_tag "Submit", class: "btn btn-primary"  %>
         </div>
+
          <% end %>
 
     </div >

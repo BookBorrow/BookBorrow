@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :books
+  
+  
+  get "/books" => "books#index"
+  get "/books/new" => 'books#new', :as => :new_book
+  get "/books/:id" => "books#show", :as => :book
+  post "/books" => "books#create", :as => :create_book
+
 
   root 'welcome#index'
   devise_for :users
