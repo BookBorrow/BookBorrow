@@ -23,7 +23,7 @@ class BorrowsController < ApplicationController
       @borrow = @user_book.borrows.build(borrow_params)
       @borrow.returned = false
       if @borrow.save
-        redirect_to [@user_book.user, @borrow], 
+        redirect_to user_borrows_path(@user_book.user), 
           :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
       else
         flash.now[:alert] = "Please complete the form."
