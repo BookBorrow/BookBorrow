@@ -41,7 +41,6 @@ class UserBook < ActiveRecord::Base
   end
 
   def from_isbn= isbn
-
     if book = Book.find_by(:isbn => isbn)
       self.book_id = book.id
     else

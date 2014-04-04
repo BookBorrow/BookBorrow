@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get "/books/new_from_google" => 'books#new_from_google', :as => :new_from_google
   resources :books
+
 
   root 'welcome#index'
   devise_for :users
