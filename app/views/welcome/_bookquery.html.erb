@@ -1,17 +1,24 @@
-<h3>Is one of these your book? Pick one to add it to your library</h3>
-<table id="bookresultspartial" class="table-responsive table-bordered">
-  <% counter = 0 %>
-  <tr>
-    <% @books.each do |book|%>
-    <td class="bookitem", data-ISBN="<%=book.isbn%>">
-      <%= image_tag(book.cover_url, :class => "setISBN")%>
-    </td>
-    <% counter+=1 %>
-    <% if counter %5 ==0 %>
-  </tr>
-  <tr>
-    <% end %>
-    <% end %>
-  </tr>
-</table>
-<h4>Don't see your book? <%= link_to("We can find it.", google_books_path) %></h4>
+
+<div class="panel panel-default">
+  <h3>Is one of these your book? Pick one to lend out.</h3>
+  <table id="bookresultspartial" class="table-responsive table-bordered">
+    <% counter = 0 %>
+    <tr>
+      <% @books[0..9].each do |book|%>
+      <td class="bookitem", data-ISBN="<%=book.isbn%>">
+        <%= image_tag(book.cover_url, :class => "setISBN")%>
+      </td>
+      <% counter+=1 %>
+      <% if counter %5 ==0 %>
+    </tr>
+    <tr>
+      <% end %>
+      <% end %>
+    </tr>
+  </table>
+  <% if @books.length>10 %>
+  <h4>Too many results... please refine.</h4>
+  <% end %>
+  <h4>Don't see your book? <%= link_to("We can find it.", books_path) %></h4>
+</div>
+
