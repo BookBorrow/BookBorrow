@@ -16,7 +16,7 @@
 	    </li>
 	    <% if current_user == user %>
 	    <li class="list-group-item">
-	    	<%= render "user_books/form" %>
+	    		<%= link_to("Add Books to Your Library", "/books", :class=>"btn btn-primary") %>
 	    </li>
 	    <% end %>
     </ul>

@@ -1,17 +1,17 @@
 <div class="container col-md-12 border-top">
-  <h4><%= link_to "Library", user_user_books_path(user) %></h4>
+  <h3><%= link_to "Available Library", user_user_books_path(user) %></h3>
 <hr>
-		<% (0..books.length-1).step(11) do |i| %>
+		<% (0..books.length-1).step(6) do |i| %>
 			<div class="row row-padded">
 				<!-- Ensure that if the last row has less than 9 books, break-->
-				<% unless i+9 > books.length
-				limit = i+9
+				<% unless i+4 > books.length
+				limit = i+4
 			else
 				limit = books.length
 			end
 				%>
 				<% books[i..(limit)].each do |book| %>
-					<div class="col-md-1 col-xs-4 col-sm-12 unpadded">
+					<div class="col-md-2 col-xs-4 col-sm-12 unpadded">
 						<% if current_user == @user %>
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), user_user_book_path(book.user, book)) %>
 						<% else %>
