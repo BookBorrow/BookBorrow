@@ -47,7 +47,7 @@ class BorrowsController < ApplicationController
 
   # GET /user_books/:user_book_id/borrows/:id/remind
   def remind
-    # BorrowMailer.reminder_email(@borrow).deliver
+    BorrowMailer.reminder_email(@borrow).deliver
     redirect_to [@borrow.user, @borrow], :notice => "A reminder was sent!"
   end
 
