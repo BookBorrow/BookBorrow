@@ -1,3 +1,4 @@
+<h2>Borrows</h2>
 <div class="container">
 <table class="table" id="borrows">
   <th></th>
@@ -7,5 +8,16 @@
   <th>Returned?</th>
   <th></th>
   <%= render @borrows %>
+</table>
+  
+<h2>Loan History</h2>
+<table class="table" id="borrows">
+  <th></th>
+  <th>Checkout</th>
+  <th>Overdue</th>
+  <th>Contact</th>
+  <th>Returned?</th>
+  <th></th>
+  <%= render :partial => 'inactive_borrow', :collection => @inactive_borrows, :as => :borrow %>
 </table>
 </div>
