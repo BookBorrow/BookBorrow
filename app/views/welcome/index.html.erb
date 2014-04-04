@@ -5,7 +5,7 @@
     <div class="border-form-div col-sm-6 col-sm-offset-6">
       
        
-          <%= form_tag books_path, method: :get, class: "form-inline"  do %>
+          <%= form_tag create_borrow_path, method: :get, class: "form-inline"  do %>
            <div class="form-group">
           <%= label_tag(:book_title, "What book do you want to loan out?") %>
           <%= text_field_tag :book_title, nil, class: "form-control max-width-80", placeholder: "Search for a book title", id: 'wbooksearch'%>
