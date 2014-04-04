@@ -1,4 +1,7 @@
-
+<% binding.pry %>
+<%unless session[:forwarding]["img"].nil? %>
+<%= image_tag(session[:forwarding]["img"])%>
+<% end%>
 <div class="border-form-div">
   <h2>Sign up</h2>
 
