@@ -23,12 +23,11 @@ class UserBooksController < ApplicationController
 
   # POST /users/:user_id/user_books
   def create
-    # binding.pry
     if current_user.nil?
       session[:forwarding] = params
       redirect_to new_user_registration_path
     else
-      if params[:from_isbn].nil?
+      if  params[:user_book][:from_isbn].nil?
         redirect_to current_user, :alert => "Enter in an ISBN."
       else
 
