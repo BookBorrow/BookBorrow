@@ -39,6 +39,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def library
+    user_books.select do |book|
+      book.persisted?
+    end
+  end
+
   def on_loan_collection
     user_books.select(&:on_loan?)
   end

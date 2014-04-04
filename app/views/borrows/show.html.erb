@@ -3,10 +3,12 @@
 <table class="table" id="borrows">
   <th></th>
   <th>Checkout</th>
-  <th>Due</th>
+  <th>Overdue</th>
   <th>Contact</th>
   <th>Returned?</th>
   <th></th>
   <%= render @borrow %>
 </table>
 </div>
+
+<%= link_to "back", user_path(@borrow.user), :class => "btn btn-default" %>

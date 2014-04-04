@@ -1,6 +1,12 @@
 class Borrow < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   belongs_to :user_book
+  before_save :set_borrow_date
+  validates_presence_of :borrower_name, :borrower_email, :duration_in_days, :borrow_date
+
+  def set_borrow_date
+    self.borrow_date ||= Date.today
+  end
 
   def due_date
     self.borrow_date + self.duration_in_days
@@ -16,7 +22,9 @@ class Borrow < ActiveRecord::Base
   end
 
   def due_date= due_date
-    self.duration_in_days = due_date - Date.today 
+    unless due_date.empty?
+      self.duration_in_days = DateTime.parse(due_date) - Date.today 
+    end
   end
 
   def overdue?
@@ -33,6 +41,15 @@ class Borrow < ActiveRecord::Base
 
   def book
     self.user_book.book
+  end
+
+  def from_isbn= isbn
+    if book = Book.find_by(:isbn => isbn)
+      self.book_id = book.id
+    else
+      book = Book.create_from_google(isbn)
+      self.book_id = book.id unless book.nil?
+    end
   end
 
 end

@@ -5,11 +5,22 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    if session[:user_book].present?
-      @user = current_user
-      user_book = @user.user_books.create(session[:user_book]["user_book"])
-      session[:user_book] = nil
-      flash[:notice] = "Added to your library"
+    if session[:forwarding].present?
+      @user_book = current_user.user_books.create(session[:forwarding]["user_book"])
+      if session[:forwarding]["controller"] = "borrows"
+        begin
+          @borrow = @user_book.borrows.create(:borrower_email => session[:forwarding]["borrower_name"],
+                                              :borrower_name  => session[:forwarding]["borrower_email"],
+                                              :due_date       => session[:forwarding]["due_date"],
+                                              :returned       => false)
+          flash[:notice] = "Added to your library and put on loan"
+        rescue
+        end
+
+      else
+        flash[:notice] = "Added to your library"
+      end
+      session[:forwarding] = nil
       user_path(@user)
     else
       super

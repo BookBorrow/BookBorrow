@@ -1,14 +1,13 @@
 <tr data-user-book-id="<%= user_book.id %>" class="<%= cycle('oddrow', 'evenrow') -%>">
-  <td><%= user_book.book.title %></td>
-  <td><%= truncate(user_book.book.description, length:250, separator: " ", omission: "...") %></td>
-  <td><%= user_book.book.isbn %></td>
-  <td><%= user_book.book.author %></td>
+  <td><%= link_to user_book.book.title, user_user_book_path(user_book.user, user_book) %></td>
   <td><%= image_tag(user_book.book.cover_url, class: "img-rounded") %></td>
+  <td><%= user_book.book.author %></td>
+  <td><%= user_book.book.isbn %></td>
 
   <% if user_book.on_loan? %>
     <td><%= link_to "Borrowed", user_borrow_path(user_book.user, user_book.current_borrow), class: "btn btn-danger" %></td>
   <% else %>
-    <td><%= link_to "Loanable", new_user_book_borrow_path(user_book), class: "btn btn-success" %></td>
+    <td><%= link_to "Loanable", new_user_book_borrow_path(user_book), class: "loanable-button btn btn-success" %></td>
   <% end %>
   <td>
     <a data-method="delete" style="font-size: 2em;" rel="nofollow" href="<%= user_book_path(user_book) %>">

@@ -3,23 +3,30 @@ class BorrowsController < ApplicationController
   before_action :set_user,        :only => [:destroy]
 
   def index
-    @borrows = User.find(params[:id]).borrows
+    @borrows = User.find(params[:id]).active_borrows
   end
   
   def create
-    
-
-    @user_book = UserBook.find(params[:user_book_id])
-    @borrow = @user_book.borrows.build(borrow_params)
-    @borrow.returned = false
-
-
-    if @borrow.save
-      redirect_to [@user_book.user, @borrow], 
-        :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
+    if current_user.nil?
+      session[:forwarding] = params
+      if params["from_isbn"] == ""
+        # binding.pry
+        #search page to get from_isbn
+        #then redirect_to new_user_registration_path
+      else
+        redirect_to new_user_registration_path
+      end
     else
-      redirect_to @user_book.user,
-        :notice => "Could not save."
+      @user_book = UserBook.find(params[:user_book_id])
+      @borrow = @user_book.borrows.build(borrow_params)
+      @borrow.returned = false
+      if @borrow.save
+        redirect_to [@user_book.user, @borrow], 
+          :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
+      else
+        flash.now[:alert] = "Please complete the form."
+        render 'borrows/new'
+      end
     end
   end
 
@@ -53,7 +60,7 @@ class BorrowsController < ApplicationController
   private
 
   def borrow_params
-    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned, :due_date)
+    params.require(:borrow).permit(:borrower_name, :borrower_email, :borrow_date, :duration_in_days, :returned, :due_date, :from_isbn)
   end
 
   def set_borrow

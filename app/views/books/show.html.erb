@@ -1,16 +1,17 @@
+<div class="panel">
+<h3><%= @book.title %></h3>
+<p><%= image_tag(@book.cover_url, class: "img-rounded") %></p>
+<p><%= link_to @book.author, :controller => "books", :query => @book.author %> </p>
+<p>ISBN: <%= @book.isbn %></p>
+<p><%= @book.description %> </p>
+<!--
+<p><%= @book.categories %> </p>
+<p><%= @book.average_rating %> </p>
+<p><%= @book.ratings_count %> </p>
+<p><%= @book.page_count %> </p>
+-->
 
 <%= render :partial => "add_button", :locals => {:book => @book } %>
-
-
-<%= render :partial => "loan_button", :locals => {:book => @book } %>
-
-<h3><%= @book.title %></h3>
-<p><%= image_tag(@book.cover_url, class: "img-rounded") %>
-<p><%= @book.isbn %>
-<p><%= link_to @book.author, :controller => "books", :query => @book.author %> 
-<p><%= @book.description %> 
-<p><%= @book.categories %> 
-<p><%= @book.average_rating %> 
-<p><%= @book.ratings_count %> 
-<p><%= @book.page_count %> 
-
+<br>
+<%= button_to 'Back', books_path(), method: :get %>
+</div>

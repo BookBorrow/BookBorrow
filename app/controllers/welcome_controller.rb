@@ -1,10 +1,7 @@
 class WelcomeController < ApplicationController
+before_action :confirm_signed_in, :only => "index"
 
   def index
-    @programming_books = Book.text_search("ruby")
-    @nyt_bestsellers = Book.text_search("new york times")
-    # @korean_books = Book.text_search("마음을")
-    
     @books = Book.text_search(params[:query]).page(params[:page]).per(10)
     respond_to do |format|
       format.html # index.html.erb
@@ -17,4 +14,11 @@ class WelcomeController < ApplicationController
     render :partial =>"bookquery"
   end
 
+  private 
+  def confirm_signed_in
+    if !current_user.nil?
+      @user = current_user
+      redirect_to @user
+    end
+  end
 end

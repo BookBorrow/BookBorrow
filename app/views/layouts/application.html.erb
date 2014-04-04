@@ -3,6 +3,9 @@
 <head>
 <title>BookBorrow</title>
 <%= stylesheet_link_tag    'application', media: 'all' %>
+<% if params[:controller] == "welcome" %>
+  <link rel="stylesheet" href="/assets/welcome.css" type="text/css">
+<% end %>
 <%= javascript_include_tag 'application' %>
 <%= csrf_meta_tags %>
 <%= analytics_init if Rails.env.production? %>
@@ -21,7 +24,7 @@
         <span class="icon-bar"></span>
       </button>
       <span style="font-size:2em" class="glyphicon glyphicon-book navbar-brand"></span>
-      <%= link_to "BookBorrow", root_path, :class => "navbar-brand" %>
+      <%= link_to "BookBorrow", books_path, :class => "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,7 +38,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Browse", books_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "My Library", user_path(current_user) %></li>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
             <li><%= link_to "Account", edit_user_registration_path(current_user) %></li>
             <li class="divider"></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
