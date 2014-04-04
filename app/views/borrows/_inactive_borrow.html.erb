@@ -1,11 +1,11 @@
 <tr id="borrow_<%= borrow.id %>">
   <td><img src="<%= borrow.user_book.book.cover_url %>" style="width:74px;height:98px"></td>
-  <td><%= time_ago_in_words borrow.borrow_date %> ago</td>
+  <td><%= borrow.borrow_date.strftime("%B %d, %Y") %></td>
 
   <% if borrow.overdue? %>
-    <td style="color:red"><%= borrow.due_date_in_words %></td>
+    <td style="color:red"><%= borrow.due_date.strftime("%B %d, %Y") %></td>
   <% else %>
-    <td><%= borrow.due_date_in_words %></td>
+    <td><%= borrow.due_date.strftime("%B %d, %Y") %></td>
   <% end %>
 
   <td><%= borrow.borrower_email %></td>
