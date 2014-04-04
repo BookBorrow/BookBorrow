@@ -18,6 +18,7 @@
     <%= f.text_field :borrower_email, :class => "form-control max-width-80" %>
   </div>
 
+  <%= link_to "Back", user_user_books_path(@user_book.user), :class => "btn btn-default" %>
   <%= f.submit "Loan", :class => "btn btn-primary" %>
   
 <% end %>

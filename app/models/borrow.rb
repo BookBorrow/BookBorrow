@@ -22,7 +22,9 @@ class Borrow < ActiveRecord::Base
   end
 
   def due_date= due_date
-    self.duration_in_days = DateTime.parse(due_date) - Date.today 
+    unless due_date.empty?
+      self.duration_in_days = DateTime.parse(due_date) - Date.today 
+    end
   end
 
   def overdue?

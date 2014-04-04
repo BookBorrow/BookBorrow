@@ -7,7 +7,6 @@ class BorrowsController < ApplicationController
   end
   
   def create
-
     if current_user.nil?
       session[:forwarding] = params
       if params["from_isbn"] == ""
@@ -25,8 +24,8 @@ class BorrowsController < ApplicationController
         redirect_to [@user_book.user, @borrow], 
           :notice => "Lent #{@user_book.book.title} to #{@borrow.borrower_email}"
       else
-        redirect_to @user_book.user,
-          :notice => "Could not save."
+        flash.now[:alert] = "Please complete the form."
+        render 'borrows/new'
       end
     end
   end
