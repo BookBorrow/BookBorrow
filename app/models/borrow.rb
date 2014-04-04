@@ -1,6 +1,7 @@
 class Borrow < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   belongs_to :user_book
+  validates_presence_of :borrower_email, :duration_in_days, :borrow_date
 
   def due_date
     self.borrow_date + self.duration_in_days
@@ -16,7 +17,7 @@ class Borrow < ActiveRecord::Base
   end
 
   def due_date= due_date
-    self.duration_in_days = due_date - Date.today 
+    self.duration_in_days = DateTime.parse(due_date) - Date.today 
   end
 
   def overdue?

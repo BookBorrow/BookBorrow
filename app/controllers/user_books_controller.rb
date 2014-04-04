@@ -14,6 +14,7 @@ class UserBooksController < ApplicationController
   end
 
   def show
+    @borrow = Borrow.new
   end
 
   def index

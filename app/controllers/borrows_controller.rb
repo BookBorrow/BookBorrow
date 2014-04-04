@@ -7,8 +7,6 @@ class BorrowsController < ApplicationController
   end
   
   def create
-    
-
     @user_book = UserBook.find(params[:user_book_id])
     @borrow = @user_book.borrows.build(borrow_params)
     @borrow.returned = false
@@ -53,7 +51,7 @@ class BorrowsController < ApplicationController
   private
 
   def borrow_params
-    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned, :due_date)
+    params.require(:borrow).permit(:borrower_email, :borrow_date, :duration_in_days, :returned, :due_date, :borrower_name)
   end
 
   def set_borrow
