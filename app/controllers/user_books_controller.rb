@@ -29,16 +29,18 @@ class UserBooksController < ApplicationController
       redirect_to new_user_registration_path
     else
       if params[:from_isbn].nil?
-        redirect_to current_user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
-      end
-      @user = User.find(params[:user_id])
-      user_book = @user.user_books.build(user_book_params)
+        redirect_to current_user, :alert => "Enter in an ISBN."
+      else
+
+        @user = User.find(params[:user_id])
+        user_book = @user.user_books.build(user_book_params)
         if user_book.save
           redirect_to @user
         else
           redirect_to @user, :alert => "Not valid ISBN: #{user_book_params[:from_isbn]}"
         end
       end
+    end
   end
 
   private
