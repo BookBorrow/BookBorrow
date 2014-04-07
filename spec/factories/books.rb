@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :book do
-    title "Cather in the Rye"
+    title "Catcher in the Rye"
     description "Horrible"
     sequence(:isbn, 100000000) { |n| n }
     author "J.D. Salinger"

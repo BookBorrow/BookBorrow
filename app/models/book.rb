@@ -3,6 +3,7 @@ class Book < ActiveRecord::Base
   has_many :users, :through => :user_books
   before_validation :normalize_isbn, :on => :create
   validates_uniqueness_of :isbn
+  validates_length_of :isbn, :minimum => 9
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :isbn, :author, :cover_url], using: {tsearch: {dictionary: "english"}}
@@ -57,6 +58,6 @@ private
   end
 
   def self.strip_isbn(isbn)
-    isbn.gsub(/\D/,"")
+    isbn.to_s.gsub(/\D/,"")
   end
 end

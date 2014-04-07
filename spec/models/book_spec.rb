@@ -10,17 +10,22 @@ describe Book do
     end
   end
 
-  describe "valdiation" do
+  describe "validation" do
     it "validates uniqueness of isbn" do
       @book = create(:book)
       @book2 = build(:book, :isbn => @book.isbn)
       expect(@book2).not_to be_valid
     end
 
-    it "validates numbericality and length >= 9 for isbn" do
-      @book = create(:book, :isbn => "1234")
+    it "validates length <= 9 for isbn" do
+      @book = Book.new(:isbn => "1234")
       expect(@book).not_to be_valid
-
     end
+
+    it "validates length >= 9 for isbn" do
+      @book = Book.new(:isbn => "123456789")
+      expect(@book).to be_valid
+    end
+
   end
 end
