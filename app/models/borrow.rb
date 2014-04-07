@@ -12,11 +12,6 @@ class Borrow < ActiveRecord::Base
     self.borrow_date + self.duration_in_days
   end
 
-  def due_date_in_words
-    words = time_ago_in_words(self.due_date)
-    self.due_date.past? ? "+#{words}" : "-#{words}"
-  end2
-
   def overdue?
     self.due_date < Date.today && !self.returned
   end

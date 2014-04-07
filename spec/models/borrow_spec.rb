@@ -13,12 +13,14 @@ describe Borrow do
     expect(borrow.due_date).to eq(borrow.borrow_date+7.days)
   end
 
-  it "sets the duration based on the due date" do
-    Date.stub(:today).and_return(Time.parse("Jan 14 2014"))
-    borrow = Borrow.new
-    binding.pry
-    # borrow.due_date=()
+  it "knows when it is overdue" do
+    b = build(:borrow)
+    b.borrow_date = Time.now-30.days
+    expect(b.overdue?).to eq(true)
+  end
 
+  it "can find the book's owner" do
+    pending
   end
 
 end
