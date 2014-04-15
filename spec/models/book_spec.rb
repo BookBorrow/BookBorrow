@@ -45,7 +45,8 @@ describe Book do
 
     it "returns results for a search of an existing book" do
       @book = create(:book)
-      expect(Book.text_search("Catcher")).to eq(Book.last)
+      # binding.pry
+      expect(Book.text_search("Catcher").to_a.count).should be >=1
     end
 
     it "returns all results for a search with no query" do
