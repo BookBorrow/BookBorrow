@@ -20,7 +20,21 @@ describe Borrow do
   end
 
   it "can find the book's owner" do
-    pending
+    @book = create(:book)
+    @user = create(:user)
+    @user2 = create(:user)
+    #create entry in user_books
+    @user.books << @book
+
+    #create borrow on user_book
+    @borrow = @user.user_books.first.borrows.create({
+                                            :borrower_email => @user2.email,
+                                            :borrower_name => @user2.name,
+                                            :duration_in_days => 3,
+                                            :borrow_date => Date.today
+    })
+
+    @borrow.user_book.user.should eq (@user)
   end
 
 end

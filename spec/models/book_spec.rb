@@ -50,7 +50,6 @@ describe Book do
     end
 
     it "returns all results for a search with no query" do
-      pending
       #returns active record so it should not be an array...
       @book = create(:book)
       expect(Book.text_search("").count).to eq(1)
