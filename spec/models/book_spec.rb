@@ -35,7 +35,7 @@ describe Book do
 
     it "creates a new book from Google using isbn" do
       Book.create_from_google("0241950430")
-      expect(Book.last.title).to eq("Catcher in the Rye")
+      expect(Book.last.title).to eq("The Catcher in the Rye")
     end
 
     it "creates a new book from Google using title" do

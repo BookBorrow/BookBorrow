@@ -61,6 +61,6 @@ private
   end
 
   def self.strip_isbn(isbn)
-    isbn.to_s.gsub(/\D/,"").to_i
+    isbn.to_s.gsub(/\D/,"")
   end
 end

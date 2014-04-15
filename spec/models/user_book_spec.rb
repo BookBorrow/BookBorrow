@@ -10,7 +10,12 @@ describe UserBook do
       @user.books << @book
 
       #create borrow on user_book
-      @user.user_books.first.borrows.create(:user_id => @user2.id)
+      @user.user_books.first.borrows.create({
+                                              :borrower_email => @user2.email,
+                                              :borrower_name => @user2.name,
+                                              :duration_in_days => 3,
+                                              :borrow_date => Date.today
+      })
       expect(@user.user_books.first.borrows.count).to eq(1)
     end
   end
