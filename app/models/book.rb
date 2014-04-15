@@ -3,6 +3,8 @@ class Book < ActiveRecord::Base
   has_many :users, :through => :user_books
   before_validation :normalize_isbn, :on => :create
   validates_uniqueness_of :isbn
+  validates :isbn, length: { minimum: 9 }
+  validates :isbn, length: { maximum: 13 }
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description, :isbn, :author, :cover_url], using: {tsearch: {dictionary: "english"}}
@@ -51,6 +53,10 @@ class Book < ActiveRecord::Base
       order("created_at DESC")
     end
   end
+
+  # def valid?
+  #   self.isbn.length==9 || self.isbn.length ==13
+  # end
 
 private
   def normalize_isbn
