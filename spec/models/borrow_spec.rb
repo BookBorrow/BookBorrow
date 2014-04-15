@@ -19,7 +19,7 @@ describe Borrow do
     expect(b.overdue?).to eq(true)
   end
 
-  it "can find the book's owner" do
+  it "can find the book's owner and its book" do
     @book = create(:book)
     @user = create(:user)
     @user2 = create(:user)
@@ -34,7 +34,8 @@ describe Borrow do
                                             :borrow_date => Date.today
     })
 
-    @borrow.user_book.user.should eq (@user)
+    @borrow.user.should eq (@user)
+    @borrow.book.should eq (@book)
   end
 
 end

@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe Book do
+  describe 'class attributes' do
+    before (:each) do
+      @book = create(:book)
+      @user = create(:user)
+    end
+
+
+  end
+
   describe "associations" do
     it "should have many users" do
       @user = create(:user)
