@@ -26,6 +26,7 @@ class Book < ActiveRecord::Base
                          :ratings_count => record.ratings_count,
                          :average_rating => record.average_rating,
                          :page_count => record.page_count)
+
   	end
   end
 
@@ -54,16 +55,12 @@ class Book < ActiveRecord::Base
     end
   end
 
-  # def valid?
-  #   self.isbn.length==9 || self.isbn.length ==13
-  # end
-
 private
   def normalize_isbn
     self.isbn = Book.strip_isbn(self.isbn) unless self.isbn.nil?
   end
 
   def self.strip_isbn(isbn)
-    isbn.to_s.gsub(/\D/,"").to_f
+    isbn.to_s.gsub(/\D/,"").to_i
   end
 end
