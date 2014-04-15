@@ -7,7 +7,6 @@ describe Book do
       @user = create(:user)
     end
 
-
   end
 
   describe "associations" do
