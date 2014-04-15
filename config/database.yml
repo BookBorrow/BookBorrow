@@ -8,6 +8,8 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: utf8
+  username: eugenemillerman
+  password: eugenemillerman
 
 development:
   <<: *default

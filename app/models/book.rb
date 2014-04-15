@@ -27,21 +27,22 @@ class Book < ActiveRecord::Base
   	end
   end
 
-  def title_from_google=(title)
-    search = GoogleBooks.search("title: #{title}", {:count => 1, :api_key => "AIzaSyCvOuvO_hQS_ZULj8Q4vIBttWefh6kv8zY"})
-    if search.first
-      record = search.first
-      self.title = record.title
-      self.description = record.description
-      self.author = record.authors_array[0]||record.authors||"unknown"
-      self.isbn = record.isbn
-      self.cover_url = record.image_link
-      self.categories = record.categories
-      self.ratings_count = record.ratings_count,
-      self.average_rating = record.average_rating,
-      self.page_count = record.page_count
-    end
-  end
+# NOT NECESSARY
+  # def title_from_google=(title)
+  #   search = GoogleBooks.search("title: #{title}", {:count => 1, :api_key => "AIzaSyCvOuvO_hQS_ZULj8Q4vIBttWefh6kv8zY"})
+  #   if search.first
+  #     record = search.first
+  #     self.title = record.title
+  #     self.description = record.description
+  #     self.author = record.authors_array[0]||record.authors||"unknown"
+  #     self.isbn = record.isbn
+  #     self.cover_url = record.image_link
+  #     self.categories = record.categories
+  #     self.ratings_count = record.ratings_count,
+  #     self.average_rating = record.average_rating,
+  #     self.page_count = record.page_count
+  #   end
+  # end
 
   def self.text_search(query)
     if query.present?
@@ -57,6 +58,6 @@ private
   end
 
   def self.strip_isbn(isbn)
-    isbn.gsub(/\D/,"")
+    isbn.to_s.gsub(/\D/,"").to_f
   end
 end

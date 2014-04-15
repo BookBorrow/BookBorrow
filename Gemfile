@@ -43,6 +43,7 @@ gem "pg"
 gem "pg"
 
 group :test, :development do
+  gem 'railroady'
   gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
