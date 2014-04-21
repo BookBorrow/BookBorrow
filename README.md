@@ -14,3 +14,6 @@ Check out our snappy homepage, which allows you to sign up, add a book to your l
 * Book - Borrower model
 * Email reminders
 * Friendly forwarding
+
+##Current Status
+[![Build Status](https://travis-ci.org/BookBorrow/BookBorrow.svg?branch=master)](https://travis-ci.org/BookBorrow/BookBorrow)[![Coverage Status](https://coveralls.io/repos/BookBorrow/BookBorrow/badge.png?branch=master)](https://coveralls.io/r/BookBorrow/BookBorrow?branch=master)[![Code Climate](https://codeclimate.com/github/BookBorrow/BookBorrow.png)](https://codeclimate.com/github/BookBorrow/BookBorrow)

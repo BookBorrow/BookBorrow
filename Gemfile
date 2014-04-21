@@ -52,6 +52,7 @@ group :test, :development do
   gem "binding_of_caller"
   gem "factory_girl_rails"
   gem "simplecov"
+  gem 'coveralls', require: false
   gem "database_cleaner"
   gem "pry"
 end
