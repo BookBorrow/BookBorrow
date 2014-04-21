@@ -7,7 +7,6 @@ describe 'Application Helper' do
     user =  create(:user)
     user.update(email: "test@test.com")
     dummy_class.any_instance.stub(:root_url).and_return("http://localhost:3000")
-
     expect(dummy_class.new.avatar_for(user)).to eq("http://gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452.png?s=100")
   end
 
@@ -16,8 +15,13 @@ describe 'Application Helper' do
     user =  create(:user)
     user.update(email: "test@test.com")
     dummy_class.any_instance.stub(:root_url).and_return("http://localhost:3000")
-
     expect(dummy_class.new.mini_avatar(user)).to eq("http://gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452.png?s=50")
+  end
+  let(:dummy_class) { Class.new { include ApplicationHelper } }
+
+  it 'strips isbn to only digits' do
+    expect(dummy_class.new.strip_isbn("973-02493508")).to eq("97302493508")
+
   end
 
 end
