@@ -14,3 +14,6 @@ Check out our snappy homepage, which allows you to sign up, add a book to your l
 * Book - Borrower model
 * Email reminders
 * Friendly forwarding
+
+##Current Status
+[![Code Climate](https://codeclimate.com/github/BookBorrow/BookBorrow.png)](https://codeclimate.com/github/BookBorrow/BookBorrow)
