@@ -1,6 +1,5 @@
 require 'spec_helper'
-
-
+require 'application_helper'
 
 describe User do
 
@@ -36,6 +35,5 @@ describe User do
       expect(@user.available_library.count).to eq(1)
     end
   end
-
 
 end

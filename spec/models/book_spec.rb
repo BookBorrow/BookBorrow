@@ -46,9 +46,16 @@ describe Book do
       expect(Book.last.title).to eq("The Catcher in the Rye")
     end
 
-    it "creates a new book from Google using title" do
+    it "creates a new book from Google using create from google with title mode" do
       Book.create_from_google("Everyone Poops", mode = "title")
       expect(Book.last.title).to eq("Everyone Poops")
+    end
+
+    it "creates a new book from Google using title" do
+      book = Book.new
+      book.title_from_google = "Everyone Poops"
+      book.save
+      expect(book.isbn).to eq("9781435274334")
     end
 
     it "returns results for a search of an existing book" do
@@ -63,6 +70,5 @@ describe Book do
       expect(Book.text_search("").count).to eq(1)
       # expect(Book.text_search("")).to be_a(Array)
     end
-
   end
 end
