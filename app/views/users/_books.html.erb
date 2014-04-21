@@ -13,8 +13,10 @@
 				<% books[i..(limit)].each do |book| %>
 					<div class="col-md-2 col-xs-4 col-sm-12 unpadded">
 						<% if current_user == @user %>
-							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), user_user_book_path(book.user, book)) %>
-						<% else %>
+
+              <%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), "#",
+                          data: {:toggle => "tooltip"}, :title => "something" ) %>
+              <% else %>
 							<%= link_to(image_tag(book.cover_url, :class=>"img-responsive"), user_user_book_path(book.user, book)) %>
 							<% end %>
 					</div>

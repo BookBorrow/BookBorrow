@@ -1,24 +1,23 @@
 <div class="container content-center">
   <div class="row">
-    <h2>Share your books <em>and</em> get them back.</h2>
-    <h4>Keep track of who's borrowing your books with BookBorrow.</h4>
+    <h2>Step 1: Select a Book</h2>
     <div class="border-form-div col-sm-6 col-sm-offset-6">
           <%= form_tag create_borrow_path, method: :post, class: "form-inline"  do %>
 
            <div class="form-group">
-          <%= label_tag(:book_title, "What book do you want to loan out?") %>
-          <%= text_field_tag :book_title, nil, class: "form-control max-width-80", placeholder: "Search for a book title", id: 'wbooksearch'%>
+          <%= label_tag(:book_title, "Search for your book.") %>
+          <%= text_field_tag :book_title, nil, class: "form-control max-width-80", placeholder: "Catch 22", id: 'wbooksearch'%>
         </div>
         <div class="form-group">
           <%= label_tag(:borrower_name, "Who are you loaning it to?") %>
-          <%= text_field_tag :borrower_name, nil, class: "form-control max-width-80", placeholder: "Borrower's name"%>
+          <%= text_field_tag :borrower_name, nil, class: "form-control max-width-80", placeholder: "Bill Clinton"%>
         </div>
         <div class="form-group">
-          <%= label_tag(:borrower_email, "Where can we send overdue notices?", :"data-toggle"=> "tooltip", :"data-placement"=>"top", :title=>"Borrower emails are totally optional, and we'll only send emails when and if you ask us to.") %>
-          <%= text_field_tag :borrower_email, nil, class: "form-control max-width-80", placeholder: "Borrower's email (optional)"%>
+          <%= label_tag(:borrower_email, "What's their email?") %>
+          <%= text_field_tag :borrower_email, nil, class: "form-control max-width-80", placeholder: "bill@usprez.net"%>
         </div>
         <div class="form-group">
-          <%= label_tag(:due_date, "When do you want your book back?") %>
+          <%= label_tag(:due_date, "When do you want it back?") %>
           <%= date_field_tag :due_date, nil, class: "form-control max-width-80" %>
         </div>
         <br><br>
@@ -32,8 +31,11 @@
 
     </div >
     <!-- Partial for book query -->
-    <div id="bookquery" class="col-md-8">
-      
+    <div id="bookquery-container" class="col-md-6 panel panel-default">
+      <h2>Share books <em>and</em> get them back.</h2>
+      <h4>Keep track of who's borrowing your books with BookBorrow.</h4>
+      <div id="bookquery">
+      </div>
     </div>
   </div>
 </div>

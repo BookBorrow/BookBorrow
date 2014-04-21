@@ -36,10 +36,10 @@ class Book < ActiveRecord::Base
       self.author = record.authors_array[0]||record.authors||"unknown"
       self.isbn = record.isbn
       self.cover_url = record.image_link
-      self.categories = record.categories
-      self.ratings_count = record.ratings_count,
-      self.average_rating = record.average_rating,
-      self.page_count = record.page_count
+      #self.categories = record.categories
+      #self.ratings_count = record.ratings_count
+      #self.average_rating = record.average_rating,
+      #self.page_count = record.page_count
     end
   end
 
