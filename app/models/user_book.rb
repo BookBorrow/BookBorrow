@@ -4,7 +4,7 @@ class UserBook < ActiveRecord::Base
   has_many :borrows
 
   def borrowed?
-    self.borrows.last && !self.borrows.last.returned?
+    self.borrows.count>0 ? self.borrows.last && !self.borrows.last.returned? : false
   end
 
   def author
