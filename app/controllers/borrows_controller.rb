@@ -12,7 +12,6 @@ class BorrowsController < ApplicationController
     if current_user.nil?
       session[:forwarding] = params
       if params["from_isbn"] == ""
-        # binding.pry
         #search page to get from_isbn
         #then redirect_to new_user_registration_path
       else

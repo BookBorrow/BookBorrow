@@ -9,6 +9,7 @@ default: &default
   pool: 5
   timeout: utf8
 
+
 development:
   <<: *default
   database: bookborrow_development

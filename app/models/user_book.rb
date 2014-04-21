@@ -7,7 +7,6 @@ class UserBook < ActiveRecord::Base
     self.borrows.last && !self.borrows.last.returned?
   end
 
-
   def author
     book.author
   end
