@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="col-md-8 col-sm-6 col-xs-12 col-lg-9">
-    <h3><%= link_to "Borrows", user_borrows_path(@user) %></h3>
+    <h3><%= link_to "On Loan", user_borrows_path(@user) %></h3>
     <%= render :partial => "borrows", :locals => {:borrows => @active_borrows } %>
     <%= render :partial => "books", :locals => {:user => @user, :books => @user.library} %>
 	 	</div>

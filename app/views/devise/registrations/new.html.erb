@@ -1,28 +1,33 @@
-<div class="border-form-div">
-  
-  <%unless session[:forwarding]["img"].nil? %>
-  <div>
-    <%= image_tag(session[:forwarding]["img"])%>
-    <p>Sign up to loan this book.</p>
+<div class="row">
+  <h2>Step 2: Sign up</h2>
+  <div class="border-form-div col-md-3">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :email %><br>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %><br>
+      <%= f.password_field :password, autocomplete: "off" %>
+
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+      <%= f.submit "Sign up", :class=>'btn btn-primary' %>
+
+    <% end %>
+    <br>
+    <%= render "devise/shared/links" %>
   </div>
-  <% end%>
-  <h2>Sign up</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
-  <%= f.label :email %><br>
-  <%= f.email_field :email %>
-  
-  <%= f.label :password %><br>
-  <%= f.password_field :password, autocomplete: "off" %>
-  
-  <%= f.label :password_confirmation %><br>
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  
-  <%= f.submit "Sign up", :class=>'btn btn-primary' %>
-  
-  <% end %>
-  <br>
-  <%= render "devise/shared/links" %>
+  <div class="col-md-6 panel panel-default" id="sign-up-panel">
+    <%unless session[:forwarding]["img"].nil? %>
+      <br>
+      <h2 class="center">Almost there...</h2>
+      <div>
+        <%= image_tag(session[:forwarding]["img"], :class => "centered-image")%>
+      </div>
+      <h2 class="center">sign up to lend this book.</h2>
+    <% end%>
+  </div>
 </div>

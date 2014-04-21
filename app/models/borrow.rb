@@ -12,6 +12,10 @@ class Borrow < ActiveRecord::Base
     self.borrow_date + self.duration_in_days
   end
 
+  def due_date= due_date
+    self.duration_in_days = Date.parse(due_date) - Date.today
+  end
+
   def overdue?
     self.due_date < Date.today && !self.returned
   end
