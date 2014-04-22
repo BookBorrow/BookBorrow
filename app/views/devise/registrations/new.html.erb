@@ -21,7 +21,7 @@
     <%= render "devise/shared/links" %>
   </div>
   <div class="col-md-6 panel panel-default" id="sign-up-panel">
-    <%unless session[:forwarding]["img"].nil? %>
+    <% unless session[:forwarding].nil? || session[:forwarding]["img"].nil? %>
       <br>
       <h2 class="center">Almost there...</h2>
       <div>
